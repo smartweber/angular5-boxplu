@@ -1,0 +1,64 @@
+#outerSettingsWrapper {
+  margin-top: 170px;
+}
+
+.sett-menu-wrapper {
+  width: 50%;
+  max-width: 620px;
+  @include centerer;
+  margin: 0 auto;
+
+}
+
+.sett-menuOption {
+  border: 1px solid #fff;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.sett-menuOptionsTbl {
+  width: 100%;
+  border: none;
+  font-weight: bold;
+
+  tr {
+    &:hover {
+      background-color: $input-bg-color;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    &:hover {
+      color: $link-hover-color
+    }
+  }
+
+  td {
+    padding: 14px 24px 14px;
+  }
+
+  .sett-desc {
+    font-size: 10px;
+    width: 90%;
+     @include tablet{
+       font-size: 16px;
+     }
+
+    .upper {
+      text-transform: uppercase;
+    }
+  }
+
+  .sett-action {
+    font-size: 10px;
+    width: 10%;
+    text-align: right;
+    text-transform: uppercase;
+    vertical-align: middle;
+    @include tablet{
+      font-size: 16px;
+    }
+  }
+}

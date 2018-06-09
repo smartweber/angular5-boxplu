@@ -1,0 +1,72 @@
+<p class="paymentMethodTitle">{{globals.strings?.PAYMENT_METHOD_SELECT}}</p>
+
+<div id="paymentBtns">
+  <button *ngFor="let paymentOption of paymentOptions"
+          (click)="onPaymentBtnClick(paymentOption)" class="paymentChoiceBtn" [ngClass]="{'selected': paymentOption.selected==true}">
+    {{paymentOption.label}}
+  </button>
+</div>
+
+<!-- Wrapper for the payment options -->
+<div class="paymentMethods">
+
+  <!-- SHOW CREDIT CARD LIST -->
+  <div class="creditCardList" *ngIf="showCreditCardList">
+    <!-- FIXME: No available mockups for this. Using table based design -->
+    <!-- FIXME: No available key string for "Credit Card List" -->
+    <table class="creditCardListTbl">
+      <tr>
+        <th>{{globals.strings.CREDIT_CARD_NUMBER || "Credit Card Number"}}</th>
+        <th colspan="2">{{globals.strings.CREDIT_CARD_VALID_THRU || "Valid Thru"}}</th>
+      </tr>
+      <tr *ngFor="let creditCard of profilePaymentMethods">
+        <!-- Credit card number -->
+        <td>XXXX XXXX XXXX {{creditCard.credit_card_number}}</td>
+        <!-- expiry -->
+        <td>{{creditCard.expiration_date}}</td>
+        <!-- choose me button -->
+        <!-- payment method token uniquely identifies this payment -->
+        <td><button (click)="payWithThisCC(creditCard.payment_method_token)">{{globals.strings.CREDIT_CARD_USE_THIS}} ({{payObjectCurrency}}{{payObjectPrice}})</button></td>
+      </tr>
+    </table>
+
+  </div>
+
+  <!-- ADD CREDIT CARD -->
+  <div class="addCreditCardFrm" [hidden]="showAddCreditCard===false">
+    <p>{{globals.strings?.ADD_CREDIT_CARD_ADD_BUTTON}}</p>
+
+    <form #addCC="ngForm" (ngSubmit)="getStripeToken(addCC)" class="addCCFrm">
+      <div class="form-row">
+        <div id="card-info" #cardInfo></div>
+
+        <div id="card-errors" role="alert" *ngIf="error">{{ error }}</div>
+      </div>
+
+      <button type="submit">{{globals.strings.CREDIT_CARD_PAY || 'Pay'}} ({{payObjectCurrency}}{{payObjectPrice}})</button>
+    </form>
+
+
+  </div>
+
+  <!-- VOUCHER -->
+  <div class="payWithVoucher" *ngIf="paymentMethod=='voucher'">
+    <p>{{globals.strings.PAYMENT_FORM_VOUCHER_PLACEHOLDER}}</p>
+
+    <form #voucherFrm="ngForm" (ngSubmit)="onVoucherSubmit(voucherFrm)">
+      <div class="form-row">
+        <input type="text" class="form-control" id="voucher" name="voucher" ngModel required #voucher="ngModel">
+      </div>
+      <button type="submit" id="voucherSubmitBtn" class="btn btn-default">{{globals.strings.PAYMENT_FORM_VOUCHER_REDEEM || 'Redeem'}}</button>
+    </form>
+
+
+  </div>
+
+  <!-- TOKEN -->
+  <div id="payWithToken" *ngIf="paymentMethod=='token'">
+    <p>You have chosen Token</p>
+
+  </div>
+
+</div>

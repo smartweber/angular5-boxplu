@@ -1,0 +1,43 @@
+<div id="outerEditProfileWrapper">
+  <h4><div class="breadCrumb" (click)="crumbClick(globals.pageTitleSlug)">{{globals.strings.SCREEN_SETTINGS}}</div> <i class="fa fa-arrow-right" aria-hidden="true"></i> <div class="breadCrumb" (click)="crumbClick('settings/my-account')">{{globals?.strings.SCREEN_ACCOUNT}}</div> <i class="fa fa-arrow-right" aria-hidden="true"></i> {{globals.strings.EDIT_PROFILE_TITLE}}</h4>
+
+  <div id="edit-profile-wrapper">
+    <form id="editProfileFrm" #editProfile="ngForm">
+
+      <div style="text-align: center">
+        <img src="{{globals.currAvatar || globals.defaultAvatar}}" style="width: 72px; height: 72px;"><br> <!-- globals.currProfile?.avatar?.url -->
+
+        <button class="fileBtn" id="fileup" type="button">{{globals.strings.EDIT_PROFILE_CHANGE_IMAGE}}
+          <input type="file" (change)="uploadFile($event)" id="avatar-file" accept=".png,.jpg,.jpeg" value=""/>
+        </button>
+      </div>
+
+      <div class="inputRow" style="margin-top: 20px;">
+        <label id="id4-editProfileEmail" for="edit-profile-email">{{globals.strings.EMAIL_PLACEHOLDER}}</label>
+        <input type="email" id="edit-profile-email" name="edit-profile-email" aria-labelledby="id4-editProfileEmail" aria-describedby="id4" aria-required="true" [(ngModel)]="email" required>
+      </div>
+
+      <!-- Name and surname in one go -->
+      <div class="inputRow">
+        <label id="id5-editProfileName" for="edit-profile-name">{{globals.strings.REGISTER_SCREEN_FIRST_NAME}}</label>
+        <input type="text" name="edit-profile-name" id="edit-profile-name" aria-labelledby="id5-editProfileName" aria-describedby="id5" [(ngModel)]="name">
+      </div>
+
+      <div class="inputRow">
+        <label id="id6-editProfileAddress" for="edit-profile-address">{{globals.strings.REGISTER_SCREEN_ADDRESS}}</label>
+        <input type="text" name="edit-profile-address" id="edit-profile-address" aria-labelledby="id6-editProfileAddress" aria-describedby="id6" [(ngModel)]="address">
+      </div>
+
+      <div class="inputRow">
+        <label id="id7-editProfilePostcode" for="edit-profile-postcode">{{globals.strings.REGISTER_SCREEN_ZIP_CODE}}</label>
+        <input type="text" name="edit-profile-postcode" id="edit-profile-postcode" aria-labelledby="id7-editProfilePostcode" aria-describedby="id7" [(ngModel)]="zipCode">
+      </div>
+
+      <div class="inputRow">
+        <p style="text-align: center;">
+          <button id="edit-profile-update-btn" (click)="onSubmit()" [disabled]="!editProfile.form.valid">{{globals.strings.BUTTON_UPDATE_DETAILS}}</button>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

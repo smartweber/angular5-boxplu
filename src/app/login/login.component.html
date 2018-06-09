@@ -1,0 +1,43 @@
+<div *ngIf="isVisible" class="popup-container">
+  <div class="popup-close" (click)="isVisible=false"></div>
+  <div class="popup-content">
+    <div id="loginContent">
+      <span class="close-button" (click)="isVisible=false"></span>
+        <button *ngIf="globals.rules.facebookLogin" class="facebook_login_btn" (click)="facebookLogin()">{{globals.strings.LOGIN_SCREEN_LOGIN_WITH_FACEBOOK}}</button>
+
+      <div *ngIf="globals.nbrOfLoginProviders > 1" class="styled-select semi-square">
+
+        <select>
+          <option *ngFor="let provider of globals.settings.user_configurations.authentication_providers">{{provider.provider}}</option>
+        </select>
+
+      </div>
+
+        <p class="popup-title">{{globals.strings.LOGIN_SCREEN_ENTER_YOUR_CREDENTIALS}}</p>
+
+      <form id="loginFrm">
+        <input [(ngModel)]="email" type="email" name="email" id="email" placeholder="{{globals.strings.LOGIN_SCREEN_USERNAME}}">
+        <div class="loginPassword">
+          <span class="fa" [ngClass]="{'fa-eye-slash': showPassword, 'fa-eye': !showPassword}" (click)="toggleEye()"></span>
+          <input [(ngModel)]="password" type="{{showPassword ? 'text' : 'password'}}" name="password" id="password" placeholder="{{globals.strings.LOGIN_SCREEN_PASSWORD}}">
+        </div>
+        <label id="id3-keepSigned" for="keepSignedOption"><input type="checkbox" class="keepSignedCheckBox" name="keepSignedOption" id="keepSignedOption"  aria-labelledby="id3-keepSigned" aria-describedby="id3" (click)="keepLoginData=!keepLoginData"><span>{{globals.strings.LOGIN_SCREEN_KEEP_ME_SIGNED_IN}}</span></label>
+        <div class="actionBtnWrapper">
+          <button (click)="providerLogin()" class="pressBtn">{{globals.strings.LOGIN_SCREEN_LOGIN}}</button>
+        </div>
+      </form>
+
+      <div class="actionBtnWrapper">
+          <button *ngIf="globals.rules.register" class="pressBtn" (click)="showRegister()" [disabled]="false">{{globals.strings.SETTINGS_SCREEN_REGISTER}}</button>
+      </div>
+
+      <div>
+        <p><a id="forgotPassword" (click)="forgotPassword()">{{globals.strings.LOGIN_SCREEN_FORGOT_PASSWORD}}</a></p>
+        <p><a id="registerNewUser" (click)="registerNewUser()">{{globals.strings.LOGIN_SCREEN_DONT_HAVE_ACCOUNT}}</a></p>
+      </div>
+
+      <div *ngIf="errorMsg!==null" class="errorMsgs" @fadeInAnimation>{{errorMsg}}</div>
+
+      </div>
+    </div>
+</div>

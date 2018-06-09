@@ -1,0 +1,90 @@
+<div id="profile-drawer" *ngIf="visible" @profileDrawerAnimation>
+  <div id="currProfileDetails">
+    <div id="profilesLoading" *ngIf="loading">
+      <div class="spinner">
+        <div class="bounce1"></div>
+        <div class="bounce2"></div>
+        <div class="bounce3"></div>
+      </div>
+      <span style="font-size: 14px; text-align: center;">{{globals.strings.SELECT_PROFILE_FETCHING}}</span>
+    </div>
+
+    <table class="profileDetailsTbl">
+      <tr>
+        <td><img style="width: 76px; height: 76px;" src="{{globals.currProfile?.profile_picture?.url || globals.currProfile?.avatar.url}}"></td>
+        <td><span style="color: #fff; font-size: 18px; font-weight: bold;">{{globals.currProfile?.name}}</span><br><span style="font-size: 12px;">{{globals.currProfile?.email}}</span></td>
+      </tr>
+    </table>
+
+  </div>
+
+  <div id="addProfile">
+    <a (click)="addProfile()"><i id="addProfileIcon" class="fa fa-plus-circle" aria-hidden="true"></i><br/>
+    {{globals.strings?.ADD_PROFILE_TITLE}}
+    </a>
+  </div>
+
+
+  <div id="profilesList">
+    <table class="profilesListTbl">
+      <tr class="profilesListRow" *ngFor="let profile of globals.userProfiles" (click)="selectProfile(profile?.token)">
+        <td class="profilesListAvatar"><img class="avatarIcon" src="{{profile?.avatar.url}}"></td>
+        <td class="profilesListName">{{profile?.name}}</td>
+        <td class="profilesListEditIcon"><a [attr.data-profile-token]="profile?.token" (click)="editProfile(profile?.token)"><i class="fa fa-edit"></i></a></td>
+        <td class="profilesListTrashIcon"><a [attr.data-profile-token]="profile?.id" (click)="deleteProfile(profile?.id)"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="text-align: center">
+    <button id="signOutBtn" (click)="logout()">{{globals.strings.SETTINGS_SCREEN_SIGN_OUT}}</button>
+  </div>
+
+</div>
+
+<div *ngIf="addModalVisible" class="popup-container">
+  <div class="popup-close" (click)="isVisible=false"></div>
+  <div class="popup-content">
+    <div id="loginContent">
+      <span class="close-button" (click)="isVisible=false"></span>
+
+      <form id="addProfileFrm" (ngSubmit)="submit()">
+        <div class="form-group">
+          <label id="id1-AddProfLabel" for="profileNameInp">{{globals.strings.ADD_PROFILE_NAME_LABEL}}</label>
+          <input type="text" class="form-control" id="profileNameInp" name="profileNameInp"  aria-labelledby="id1-AddProfLabel" aria-describedby="id1" aria-required="true"  [(ngModel)]="model.profileNameInp" required>
+        </div>
+
+        <p>{{globals.strings.CREATE_PROFILE_UPLOAD_A_PIC}}</p>
+
+
+        <table>
+          <tr>
+            <td><img src="assets/ic-default-avatar.png"></td>
+            <td>
+              <div class="form-group">
+                <label id="id2-profAvatarFile" class="btn btn-default btn-file">
+                  <input type="file" style="display: none;" id="profileAvatarFile" name="profileAvatarFile"  aria-labelledby="id2-profAvatarFile" aria-describedby="id2" [(ngModel)]="model.profileAvatarFile">
+                </label>
+              </div>
+            </td>
+            <td>{{globals.strings.GENERAL_OR}}</td>
+          </tr>
+        </table>
+
+        <div class="avatarRow" *ngFor="let group of avatarsListGrouped; let i = index">
+          <div class="avatarCol" *ngFor="let avatar of avatarsListGrouped[i]">
+            <img src="{{avatar.url}}">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-success">{{globals.strings.GENERAL_CREATE}}</button>
+        </div>
+      </form>
+
+      <div *ngIf="opMsgs!==null" class="errorMsgs" @fadeInAnimation>{{errorMsg}}</div>
+
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,374 @@
+.paymentMethodTitle {
+  font-size: 22px;
+
+  @include tablet {
+    font-size: 30px;
+  }
+}
+#paymentBtns {
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 25px;
+  text-align: center;
+
+  @include tablet {
+    margin-top: 50px;
+  }
+
+  .paymentChoiceBtn {
+    background-color: $button-color;
+    color: $text-color;
+    font-size: 18px;;
+    border-radius: 10px;
+    padding: 5px 20px 5px 20px;
+    min-width: 120px;
+
+    @include tablet {
+      font-size: 22px;
+      min-width: 200px;
+    }
+
+    &:not(:last-child) {
+      margin-right: 25px;
+
+      @include tablet {
+        margin-right: 50px;
+      }
+    }
+
+    &:hover {
+      background-color: $bg-dark-color;
+    }
+
+    &.selected {
+      background-color: #4e69a2;
+    }
+  }
+}
+
+.paymentMethods {
+  width: 75%;
+  margin: 0 auto;
+
+
+  /* Pay with stripe (credit card) */
+  .addCreditCardFrm {
+    margin: 0 auto;
+    margin-top: 15px;
+    width: 75%;
+
+
+    @include tablet {
+      margin-top: 25px;
+      width: 50%;
+    }
+
+    background-color: $bg-color;
+    font-family: Quicksand, Open Sans, Segoe UI, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+
+    .fieldset {
+      margin: 0 15px 30px;
+      padding: 0;
+      border-style: none;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-flow: row wrap;
+      flex-flow: row wrap;
+      -ms-flex-pack: justify;
+      justify-content: space-between;
+    }
+
+    .field {
+      padding: 10px 20px 11px;
+      background-color: $input-bg-color;
+      color: $input-text-color;
+      width: 100%;
+    }
+
+    .field.half-width {
+      width: calc(50% - (5px / 2));
+    }
+
+    .field.third-width {
+       width: calc(33% - (5px / 3));
+    }
+
+    .field + .field {
+      margin-top: 6px;
+    }
+
+    .field:focus {
+      color: #424770;
+      //background-color: #f6f9fc;
+    }
+
+    .field.invalid {
+      background-color: #fa755a;
+    }
+
+    .field.invalid.focus {
+      background-color: #f6f9fc;
+    }
+
+    .field::placeholder {
+      color: #424770;
+    }
+
+    .field:focus::-webkit-input-placeholder {
+      color: #004770;
+    }
+
+    .field:focus::-moz-placeholder {
+      color: #004770;
+    }
+
+    .field:focus:-ms-input-placeholder {
+      color: #004770;
+    }
+
+    input, button {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      outline: none;
+      border-style: none;
+    }
+
+    input {
+      color: #fff;
+
+      &::-webkit-input-placeholder {
+        color: $text-color;
+      }
+
+      &::-moz-placeholder {
+        color: $text-color;
+      }
+
+      &:-ms-input-placeholder {
+        color: $text-color;
+      }
+
+    }
+
+    button {
+      display: block;
+      width: calc(100% - 30px);
+      height: 40px;
+      margin: 0 15px;
+      background-color: $button-color;
+      border-radius: 20px;
+      color: $text-color;
+      font-weight: 600;
+      text-transform: uppercase;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $bg-dark-color;
+      }
+
+      &:active {
+        background-color: #f5be58;
+      }
+    }
+
+    .error {
+      svg .base {
+        fill: #fa755a;
+      }
+
+      svg .glyph {
+        fill: #fff;
+      }
+
+      .message {
+        color: #fff;
+      }
+    }
+
+    .success {
+      .icon .border {
+        stroke: #fcd669;
+      }
+      .icon .checkmark {
+        stroke: #fff;
+      }
+
+      .title {
+        color: #fff;
+      }
+
+      .message {
+        color: #9cabc8;
+      }
+
+      .reset path {
+        fill: #fff;
+      }
+    }
+  } // .payWithStripe ends here
+
+  /* CREDIT CARD LIST */
+  .creditCardList {
+    width: 33%;
+    margin-top: 15px;
+    margin: 0 auto;
+
+    @include tablet {
+      width: 50%;
+      margin-top: 25px;
+    }
+
+    .creditCardListTbl {
+      font-family: Quicksand, Open Sans, Segoe UI, sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      border: none;
+      border-collapse: collapse;
+      width: 100%;
+
+      th {
+        background-color: $bg-dark-color;
+        color: $text-color;
+        padding: 5px;
+      }
+
+      th:first-child {
+        border-radius: 10px 0 0 10px;
+      }
+
+      th:last-child {
+        border-radius: 0 10px 10px 0;
+      }
+
+      tr:not(:first-child) {
+        border-bottom: 1px solid #fff;
+
+        &:hover {
+          background-color: lightslategrey ;
+          td:first-child{
+            border-radius:10px 0 0 10px;
+          }
+
+          td:last-child{
+            border-radius:0 10px 10px 0;
+          }
+        }
+      }
+
+      td {
+        padding: 5px;
+
+        &:last-child {
+          text-align: right;
+        }
+
+        /* There's only a button under td, which is the "pay with this" */
+        button {
+          background: $button-color;
+          padding: 5px;
+          color: $text-color;
+          border-radius: 5px;
+          height: auto;
+
+          &:hover {
+            background: $bg-dark-color;
+          }
+        }
+      }
+
+    }
+  }
+
+
+  form.addCCFrm {
+    max-width: 500px;
+    margin: 2rem auto;
+    text-align: center;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    background: $bg-color;
+
+    font-family: monospace;
+    color: $text-color;
+    font-size: 1.1rem;
+  }
+
+  form.addCCFrm button {
+    padding: 0.5rem 1rem;
+    color: white;
+    background: $bg-dark-color;
+    border: none;
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: 1rem;
+
+  }
+
+  form.addCCFrm button:active {
+    background: rgb(165, 76, 43);
+  }
+
+  .StripeElement {
+    margin: 1rem 0 1rem;
+    background-color: white;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
+  }
+
+  .StripeElement--focus {
+    box-shadow: 0 1px 3px 0 #cfd7df;
+  }
+
+  .StripeElement--invalid {
+    border-color: #fa755a;
+  }
+
+  .StripeElement--webkit-autofill {
+    background-color: #fefde5 !important;
+  }
+
+  #card-errors {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  .payWithVoucher {
+    margin-top: 15px;
+    margin: 0 auto;
+    width: 33%;
+    text-align: center;
+
+    @include tablet {
+      margin-top: 25px;
+    }
+
+    input[type=text] {
+      text-align:center;
+      font-size:18px;
+
+      @include tablet {
+        font-size:24px;
+      }
+    }
+
+    #voucherSubmitBtn {
+      margin-top: 15px;
+
+      &:hover {
+        background-color: $bg-dark-color;
+        color: $text-color;
+      }
+
+    }
+  }
+
+
+} // .paymentMethods ends here

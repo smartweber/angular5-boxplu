@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>TvCable</title>
+  <!--If base href is ./ it always references the root of the index.html-->
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
+  <!-- the following are not needed for tvcable -->
+<!--  <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js"></script>
+  &lt;!&ndash; Stripe Elements (payment gateway) &ndash;&gt;
+  <script src="https://js.stripe.com/v3/"></script>-->
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-5C7TRH8');</script>
+  <!-- End Google Tag Manager -->
+
+
+
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5C7TRH8"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<app-root></app-root>
+
+<script>
+    window.lazyLoadOptions = {
+        threshold: 50,
+        /*class_loading: 'imageLoading'*/
+    };
+    window.addEventListener('LazyLoad::Initialized', function (e) {
+        console.log(e.detail.instance);
+    }, false);
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-lazyload/8.7.1/lazyload.min.js"></script>
+</body>
+</html>

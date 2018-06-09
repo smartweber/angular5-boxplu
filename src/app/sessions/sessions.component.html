@@ -1,0 +1,21 @@
+<div id="sessionsWrapper">
+  <h4><div class="breadCrumb" (click)="crumbClick(globals.pageTitleSlug)">{{globals.strings.SCREEN_SETTINGS}}</div> <i class="fa fa-arrow-right" aria-hidden="true"></i> <div class="breadCrumb" (click)="crumbClick('settings/my-account')">{{globals?.strings.SCREEN_ACCOUNT}}</div> <i class="fa fa-arrow-right" aria-hidden="true"></i> {{globals.strings.DEVICE_LIST_SCREEN_DEVICE_LIST}}</h4>
+</div>
+
+  <div class="sessions-list" *ngIf="isVisible">
+    <table class="sessions-list-tbl">
+      <tr>
+        <th class="sessions-list-tbl-title" colspan="3" align="center">{{globals.strings.DEVICE_LIST_SCREEN_DEVICE_LIST}}</th>
+      </tr>
+      <tr class="sessions-list-tbl-row" *ngFor="let session of sessions">
+        <td class="sessions-list-tbl-image"><img src="{{session.image.url}}"></td>
+        <td><span class="sessions-list-tbl-session-name">{{session.name}}</span><br>
+          <span>{{session.last_time_used.toLocaleString()}}</span>
+        </td>
+        <td><i class="fa fa-times-circle" (click)="remove(session.auth_token)"></i></td>
+      </tr>
+    </table>
+  </div>
+
+
+

@@ -1,0 +1,127 @@
+.details-container.details-a {
+  padding: 0 10px;
+  display: block;
+
+
+  .details-info {
+    width: 100%;
+
+    h2 {
+      font-size: 14px;
+      font-weight: normal;
+    }
+
+    h1 {
+      font-size: 20px;
+      font-weight: normal;
+      margin: 5px 0;
+
+      img {
+        width: 17px;
+        cursor: pointer;
+        position: relative;
+        top: 2px;
+      }
+    }
+
+    p {
+      font-size: 14px;
+      font-weight: normal;
+      line-height: 1.45;
+      margin: 7px 0;
+      text-align: left;
+    }
+  }
+
+  .cast {
+    display: block;
+    text-align: left;
+
+    label {
+      font-weight: bold;
+      display: inline-block;
+      font-size: 12px;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      display: inline-block;
+    }
+
+    li {
+      display: inline-block;
+
+      &::after {
+        content: ',\00a0';
+      }
+
+      &:last-of-type::after {
+        content: '';
+      }
+    }
+  }
+
+  .movie_title, .directors, .actors {
+    font-weight: bold;
+  }
+
+  .movie_title {
+    font-size: 18px;
+  }
+
+  #layoutA_contentDetails {
+    width: 40%;
+  }
+
+  #layoutA_contentShareBtns {
+    width: 60%;
+    vertical-align: top;
+  }
+
+  td#layoutA_contentShareBtns {
+    vertical-align: top;
+  }
+
+
+  #layoutA_contentDetailsTbl {
+    width: 100%;
+    border-collapse:separate;
+    border-spacing:0 5px;
+
+    #layoutA_contentShareBtns {
+      align: right;
+    }
+
+    .fa.fa-star, .fa.fa-star-o {
+      font-size: 16px;
+      color: yellow;
+      margin-right: 2px;
+    }
+
+
+    .icon_buttons_col, .full_icon_buttons_col {
+      text-align: right;
+    }
+
+    .full_icon_buttons_col {
+      padding-top: 10px;
+    }
+  }
+
+  .moviesTrailer {
+    @include centerer;
+
+    min-width: 48px;
+    min-height: 48px;
+    padding: 5px;
+    font-size: 12px;
+
+    i {
+      font-size: 42px;
+      background: rgba(88,88,88,0.4);
+      color: #fff;
+    }
+  }
+
+}

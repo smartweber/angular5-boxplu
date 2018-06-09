@@ -1,0 +1,334 @@
+/* TODO: Luis Monteiro's css ... redo this for the new module! */
+
+.parentalHide {
+  display: contents;
+  opacity: 0.3;
+}
+
+.parentalShow {
+  display: contents;
+  opacity: 1;
+}
+
+.parentalDisable {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+}
+
+.pLang {
+  padding-left: 2em;
+}
+
+.widthRating {
+  width: 37em;
+}
+
+.ratingDescription {
+  font-size: 0.8em;
+  color: $text-color;
+}
+
+.divBtnPin {
+  margin-top:3em;
+}
+
+.btnEnterPin {
+  font-size: 0.85em;
+  color: $text-color;
+  border: 1px $text-color solid;
+  background-color: unset;
+  width: 13em;
+  height: 2.3em;
+  border-radius: 0.7em;
+}
+
+.divEnterPin {
+  width: 100%;
+  text-align: center;
+  padding-top: 3em;
+  padding-bottom: 4em;
+  //background: $bg-dark-color;
+}
+
+.pRecoverPin {
+  font-family: OpenSans;
+  color: $text-color;
+  font-size: 0.9em;
+}
+
+.pEnterPin {
+  font-family: OpenSans;
+  color: $text-color;
+  margin-bottom: 1.7em;
+}
+
+.pPinErr {
+  font-family: "OpenSans-Semibold";
+  color: $focus-color;
+}
+
+
+.iEnterPin {
+  color: black;
+  background-color: white;
+  font-weight: bold;
+  font-size: 1.3em;
+  letter-spacing: 0.3em;
+  text-align: center;
+  margin-bottom: 1em;
+  width: 14em;
+}
+
+.divPinErr { // container for the error message when the PIN is too short
+  height:1.5em;
+  margin-top:2em;
+}
+
+.divParental { /* this is for the container of a chkbox and label for parental controls*/
+  height:2.65em;
+  //width: 10.7em; // let it be auto
+  float:right;
+  margin-right:1em;
+  margin-top: -2.7em;
+  margin-bottom: 0.3em;
+  border-radius: 1.1em;
+  //background: #ff5e00;
+  //background: $bg-dark-color; // don't use a color, the mockup doesn't have background
+  padding-top: 0.2em;
+  padding-left:0.3em;
+  padding-right:0.3em;
+}
+
+.rdLang { /* for radio buttons used to choose the language */
+  float: right;
+  margin-right:2.5em;
+  margin-top:-2em;
+  border: 0;
+  width: 1.8em;
+  height: 1.8em;
+}
+
+.pChange-PIN {
+  font-family: OpenSans;
+  font-size: 0.9em;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
+  vertical-align: middle;
+  display: table-cell;
+  color: $text-color;
+  width: 8em;
+  height: 2.1em;
+  border: 1px $text-color solid;
+  border-radius: 0.5em;
+}
+
+
+.dPin-Container {
+  height: 1em;
+}
+
+.dPin-Right {
+  float:right;
+  margin-right:2em;
+}
+
+.dPin-Left {
+  float:right;
+  margin-right:1em;
+}
+
+
+/* REMAKE */
+#parentalControlsWrapper {
+  margin-top: 170px;
+}
+
+#parentalControlContent {
+  margin: 0 auto;
+  max-width: 582px;
+}
+
+#pinBtnsTbl {
+  margin: 25px auto;
+  border-spacing: 30px;
+  border-collapse: separate;
+
+
+
+}
+
+#ratingsTbl {
+  width: 100%;
+  font-size: 16px;
+
+  tr:first-child {
+    td {
+      font-weight: bold;
+    }
+  }
+  td {
+    height: 48px;
+    text-align: center;
+    border-bottom: 1px solid $text-color;
+    padding-bottom: 7px;
+
+    &:first-child {
+      width: 90%;
+      text-align: left;
+    }
+
+    tr:last-child {
+      td {
+        border-bottom: none;
+      }
+    }
+
+  }
+
+}
+
+
+/* Customize the label (the container) */
+.radio-container {
+  /*display: block;*/
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 12px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.radio-container input {
+  position: absolute;
+  left: 0px;
+  opacity: 0;
+  height: 25px;
+  width: 25px;
+  margin: 0;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: transparent;
+  border-radius: 50%;
+  border: 1px solid $text-color;
+}
+
+.radio-container:hover:not([disabled]) input ~ .checkmark {
+  background-color: $button-bg-color;
+}
+
+.radio-container:hover:disabled input ~ .checkmark {
+  cursor: not-allowed;
+}
+
+/* When the radio button is checked, add a blue background */
+.radio-container input:checked ~ .checkmark {
+  background-color: transparent;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.radio-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.radio-container .checkmark:after {
+  top: 5px;
+  left: 5px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: white;
+}
+
+#parentalPinContent, #changeParentalPinContent {
+  margin: 0 auto;
+  text-align: center;
+
+  .parentalPinMessages {
+    margin: 25px auto;
+    border: 1px solid $text-color;
+    color: $highlight-text-color;
+    height: 40px;
+    line-height: 40px;
+    vertical-align: middle;
+    max-width: 300px;
+    font-size: 16px;
+  }
+
+  .pinSuccess {
+    background-color: #42A948;
+  }
+
+  .pinError {
+    font-weight: bold;
+    background-color: crimson;
+  }
+}
+
+#parentalPinFrm, #changeParentalPinFrm {
+  margin: 25px;
+}
+
+.pinPassword {
+  position: relative;
+  width: 100px;
+  margin: 0 auto;
+
+  .fa-eye, .fa-eye-slash {
+    position: absolute;
+    top: 7px;
+    right: 1px;
+    font-size: 18px;
+    color: $text-color;
+
+    &:hover {
+      color: $highlight-text-color;
+    }
+  }
+
+  input[type="password"], input[type="text"]  {
+    background-color: $input-bg-color!important;
+    color: $input-text-color!important;
+    border: 1px solid #fff;
+    width: 100px;
+    margin-bottom: 25px;
+    min-height: 31px;
+    text-indent: 7px;
+    text-align: center;
+    font-size: 18px;
+
+    &::placeholder {
+      font-size: 12px;
+    }
+  }
+
+  input[type="password"] {
+    font-size: 28px;
+  }
+
+}

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 22.1.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 1920 295" style="enable-background:new 0 0 1920 295;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:url(#SVGID_1_);}
+	.st1{fill:url(#SVGID_2_);}
+	.st2{fill:url(#SVGID_3_);}
+	.st3{fill:#00093E;}
+	.st4{fill:#014069;}
+</style>
+<g>
+	<g>
+		
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="276.8618" y1="530.6991" x2="277.56" y2="530.6991" gradientTransform="matrix(1920 0 0 -294.6718 -531563 156529.5)">
+			<stop  offset="0" style="stop-color:#1765AB"/>
+			<stop  offset="1" style="stop-color:#254D8E"/>
+		</linearGradient>
+		<path class="st0" d="M854.4,0.1c-19.2,40-105.1,82.2-212.8,101.2c-127.5,22.5-237.4,3.9-245.4-41.4c-3.4-19.3,12.1-40.3,40.9-59.8
+			H0v294.7h1920V0.1H854.4z"/>
+		
+			<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="276.8618" y1="531.0112" x2="277.56" y2="531.0112" gradientTransform="matrix(1920 0 0 -294.6718 -531563 156529.5)">
+			<stop  offset="0" style="stop-color:#1765AB"/>
+			<stop  offset="1" style="stop-color:#254D8E"/>
+		</linearGradient>
+		<path class="st1" d="M396.3,59.9c8,45.4,117.8,63.9,245.4,41.4c107.7-19,193.6-61.2,212.8-101.2H437.1
+			C408.4,19.6,392.9,40.6,396.3,59.9z"/>
+		
+			<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="277.3308" y1="530.3001" x2="276.5331" y2="530.3001" gradientTransform="matrix(461.757 -81.4202 -28.9637 -164.2614 -111839.2031 109682.1797)">
+			<stop  offset="0" style="stop-color:#8196C9"/>
+			<stop  offset="1" style="stop-color:#537BBA"/>
+		</linearGradient>
+		<path class="st2" d="M396.3,59.9c8,45.4,117.8,63.9,245.4,41.4c107.7-19,193.6-61.2,212.8-101.2H437.1
+			C408.4,19.6,392.9,40.6,396.3,59.9z"/>
+	</g>
+	<g>
+		<path class="st3" d="M0,0.1v2.1c1.1-0.7,2.2-1.4,3.4-2.1H0z"/>
+		<path class="st3" d="M596,294.6L504.7,79.7c-44.1,42.5-141.6,77.6-257.2,87.7C146.2,176.3,55.1,163.8,0,137.5v157.1H596z"/>
+		<path class="st4" d="M247.6,167.4c115.5-10.1,213.1-45.2,257.2-87.7L470.9,0.1H3.4C2.2,0.8,1.1,1.5,0,2.2v135.3
+			C55.1,163.8,146.2,176.3,247.6,167.4z"/>
+	</g>
+</g>
+</svg>

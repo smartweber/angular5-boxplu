@@ -1,0 +1,43 @@
+.block-container {
+  margin: 20px 0;
+}
+
+.layout-container {
+  margin: 20px 0;
+}
+
+.combo-box-container {
+
+}
+
+.tab-container {
+  display: flex;
+  float: left;
+  width: 100%;
+  height: 3em;
+  margin: 20px 0 20px 0;
+
+  .tab {
+    padding: 10px;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-bottom: solid 2px $header-color;
+
+    &.selected {
+      font-family: "OpenSans-Semibold";
+      border: solid 2px $header-color;
+      border-bottom: solid 2px transparent;
+    }
+
+    &:hover {
+      color: $header-color;
+    }
+  }
+
+  .tab:last-child {
+    flex-grow: 100;
+    padding: 2px;
+  }
+}
+
+

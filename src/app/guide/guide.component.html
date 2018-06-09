@@ -1,0 +1,137 @@
+<div class="genre-selection genre-selection-epg" *ngIf="layout.show_genres">
+  <ul>
+    <li (click)="changeGenre()" [class.selected]="currentGenre == undefined">
+      All Channels
+    </li>
+    <li *ngFor="let el of genres" (click)="changeGenre(el.slug)" [class.selected]="currentGenre == el.slug">
+      {{el.name}}
+    </li>
+  </ul>
+</div>
+
+
+<!-- STANDARD GUIDE DESIGN -->
+<div class="guide-container">
+  <div class="days-container">
+    <ul class="days">
+      <li *ngFor="let el of days" (click)="selectDay(el.id)" [ngClass]="{focus : el.id == day}">
+        {{el.name}}
+      </li>
+    </ul>
+  </div>
+
+  <div class="current-epg" *ngIf="layout.show_selected_program_info=='top'">
+    <div class="current-epg-container">
+      <div class="epg-info">
+        <h3 class="epg-current-channel">
+          <p>{{currentChannel.name}}</p>
+          <p class="now-playing-time">
+            {{currentShow.isPlaying ? 'ON NOW&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' : ''}}{{currentShow.start_time_string}}
+            - {{currentShow.end_time_string}}
+          </p>
+        </h3>
+        <h3 class="epg-current-show">{{currentShow.name}}</h3>
+        <div class="epg-description">{{currentShow.description}}</div>
+      </div>
+
+      <!-- PLAYER -->
+      <div class="epgPlayerContainer" *ngIf="layout.show_preview!='none'">
+        <video class="video-js" controls preload="auto" data-setup="{}" id="epgPlayer" *ngIf="layout.show_preview=='video'"></video>
+
+        <img src="{{currentShow.image.url}}" *ngIf="layout.show_preview=='image'">
+      </div>
+    </div>
+  </div>
+
+  <div class="smaller-epg" *ngIf="smallScreen" [ngClass]="{epgOpacity : epgOpacity}">
+    <div class="smaller-epg-container">
+      <div class="channels">
+        <div class="channels-small-inner"
+             [ngStyle]="{'transform': 'translate3d(' + this.channelsPosition + 'px, 0, 0)'}">
+          <div class="channel-logo" *ngFor="let el of data"
+               [ngClass]="{selected: currentChannel.channel_number == el.channel_number}"
+               (click)="selectChannel(el)">
+            <img src="{{el.image.url}}">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="selected-channel">
+      <div *ngFor="let el of currentChannel.scheduling" class="selected-channel-program"
+           [ngClass]="{selected: el.id == currentShow.id}">
+
+        <div class="info-container" (click)="selectShow(el)">
+          <div class="now-playing-time">
+            <div class="on-now-tag" *ngIf="el.isPlaying">ON NOW</div>
+            <p class="now-playing-time">{{el.start_time_string}} - {{el.end_time_string}}</p>
+          </div>
+          <div class="title">{{el.name}}</div>
+          <!--TODO get real "no descrption" message -->
+          <div class="description">{{el.description || 'No description available'}}</div>
+        </div>
+
+        <div class="options">
+          <div *ngIf="el.isPlaying">
+            <a>
+              <img src="assets/ic_epg_play.png">
+              <p>Watch live</p>
+            </a>
+          </div>
+          <div class="borders">
+            <a ui-sref="info">
+              <img src="assets/ic_epg_info.png">
+              <p>Info</p>
+            </a>
+          </div>
+        </div>
+        <div class="bottom-border"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="standard-epg" ng-show="!smallScreen" [ngClass]="{epgOpacity : epgOpacity}">
+    <div class="time">
+      <div class="time-inner" [ngStyle]="{'transform' : 'translate3d(' + this.epgPosition + 'px, 0, 0)'}">
+        <div *ngFor="let el of time; let i = index" [ngStyle]="{'left' : i * 120 + 'px'}"
+             [hidden]="-epgPosition > i*120 - 18 || (containerWidth - epgPosition) < ((i * 120 - 18) + 136)">
+          {{el}}
+        </div>
+      </div>
+    </div>
+    <div id="standard-epg-container" [ngStyle]="{'height': epgHeight}">
+      <div class="epg-control-right" (click)="moveEpg(1)"></div>
+      <div class="epg-control-left" (click)="moveEpg(2)"></div>
+      <div *ngFor="let el of data" class="channels">
+        <div class="channel-logo" (click)='selectChannel(el)'>
+          <img src="{{el.image.url}}">
+        </div>
+        <div class="shows">
+          <div class="shows-inner" [ngStyle]="{'transform' : 'translate3d(' + this.epgPosition + 'px, 0, 0)'}">
+            <div *ngFor="let show of el.scheduling" (click)="selectShow(show, el)" class="element"
+                 [ngStyle]="{'width' : show.width + 'px', 'left' : show.left + 'px'}">
+              <div class="show-title-big"
+                   [ngClass]="{selected: currentShow.id == show.id, playing: show.isPlaying}"
+                   [ngStyle]="{'width' : (show.width - 15) + 'px'}">
+                <span [ngStyle]="getTextPosition(show)">{{show.name}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div *ngIf="popup" class="popup-container">
+  <div class="popup-close" (click)="popup=false"></div>
+  <div class="popup-content epg-popup">
+    <h1>{{currentShow.name}}</h1>
+    <h2>{{currentShow.start_time_string}} - {{currentShow.end_time_string}}</h2>
+    <p>{{currentShow.description}}</p>
+    <div class="epg-popup-options">
+      <button>WATCH</button>
+      <button *ngIf="(currentShow.start_time * 1000) > nowMs">REMINDER</button>
+    </div>
+    </div>
+</div>

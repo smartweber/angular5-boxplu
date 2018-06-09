@@ -1,0 +1,43 @@
+<div id="AppTop" class="app-container">
+  <div class="header-container">
+    <div class="header-content">
+      <header class="app-header flex-grid">
+        <app-menu></app-menu>
+      </header>
+    </div>
+  </div>
+
+  <div class="app-content">
+    <router-outlet></router-outlet>
+  </div>
+  <footer class="app-footer">
+    <div id="footer-container">
+    <app-footer></app-footer>
+    </div>
+  </footer>
+  <app-loading></app-loading>
+
+  <app-login></app-login>
+  <app-register></app-register>
+
+  <!--<app-parental></app-parental>-->
+  <app-recover-pin></app-recover-pin>
+  <app-change-pin></app-change-pin>
+  <!--<app-sessions></app-sessions>-->
+
+  <!-- change pin modal -->
+  <div *ngIf="viewLandingPage==false" class="popup-container">
+    <div class="popup-close" (click)="viewLandingPage=false"></div>
+    <div class="popup-content">
+      <div id="changeParentalPinContent">
+        <span class="close-button" (click)="showChangeModal=false"></span>
+        <h4>HARDCODED: Sign in with your account to enjoy all your favourite VOD and TV content </h4>
+        <button (click)="showLogin()">{{globals.strings.LOGIN_SCREEN_LOGIN}}</button><br><br>
+        <button (click)="verifyChangePin()">{{globals.strings.BUTTON_CHANGE_PIN}}</button>
+      </div>
+    </div>
+  </div>
+
+
+
+</div>

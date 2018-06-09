@@ -1,0 +1,376 @@
+//General rules
+
+* {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  outline: none !important;
+  box-sizing: unset;
+}
+
+
+* { margin:0; padding:0; }
+
+html {
+  min-height: 100%;
+  position: relative;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-y: auto !important;
+}
+
+body {
+  font-family: OpenSans;
+  font-weight: normal !important;
+  overflow-x: hidden;
+  margin: 0 !important;
+  padding: 0 !important;
+  background-size: cover;
+  background-color: $bg-color!important; // this eases a problem when resizing the window that causes an improper 'coverage' by the background image
+  color: $text-color!important;
+  /* min-width: 900px; */
+
+  /* TVCABLE SPECIFIC STYLES */
+  @include tvcable-main-background-image;
+
+
+  @include tablet {
+    overflow-x: hidden;
+  }
+
+  &::-webkit-scrollbar {
+    width: 15px;
+    max-height: 300px;
+    background-color: #232323;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 16px;
+    background-color: #383838;
+    border: 4px rgba(35, 35, 35, 1) solid;
+  }
+
+  scrollbar-face-color: #383838;
+  scrollbar-track-color: #232323;
+  scrollbar-highlight-color: #383838;
+  scrollbar-arrow-color: #383838;
+  scrollbar-shadow-color: #383838;
+
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+a:link {
+  color: unset;
+}
+
+a:visited {
+  color: unset;
+}
+
+a:hover {
+  color: unset;
+}
+
+a:focus {
+  outline: none !important;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.app-container {
+  /* overflow-y: auto; */
+  /*background-color: $bg-color;*/
+}
+
+/**
+ * Basis for flex grid and columns
+ */
+.flex-grid {
+  display: flex;
+  flex-flow: wrap;
+  align-content: center; /* Prevents evenly-spaced columns */
+}
+.flex-grid2 {
+  display: flex;
+}
+
+.col-1 {display: flex; flex: 0 0 1%;}
+.col-2 {display: flex; flex: 0 0 2%;}
+.col-3 {display: flex; flex: 0 0 3%;}
+.col-4 {display: flex; flex: 0 0 4%;}
+.col-5 {display: flex; flex: 0 0 5%;}
+.col-6 {display: flex; flex: 0 0 6%;}
+.col-7 {display: flex; flex: 0 0 7%;}
+.col-8 {display: flex; flex: 0 0 8%;}
+.col-9 {display: flex; flex: 0 0 9%;}
+.col-10 {display: flex; flex: 0 0 10%;}
+.col-20 {display: flex; flex: 0 0 20%;}
+.col-25 {display: flex; flex: 0 0 25%;}
+.col-33 {display: flex; flex: 0 0 33.3333%}
+.col-45 {display: flex; flex: 0 0 45%;}
+.col-50 {display: flex; flex: 0 0 50%;}
+/* .col-60 {display: flex; flex: 0 0 60%;} */
+.col-60 {
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  box-flex: 1;
+  -webkit-flex: 1 1 auto;
+  flex: 1 1 auto;
+}
+.col-70 {display: flex; flex: 0 0 70%;}
+.col-80 {display: flex; flex: 0 0 80%;}
+.col-90 {display: flex; flex: 0 0 90%;}
+.col-100 {display: flex; flex: 0 0 100%;}
+
+.app-content {
+  max-width: 1320px;
+  margin-top: 60px;
+  margin-bottom: 80px;
+
+  /*background-color: $bg-color;*/
+
+  @include tablet {
+    margin: 0 auto;
+    margin-top: 160px;
+    margin-bottom: 100px;
+  }
+}
+
+input:focus {
+  outline: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  cursor: pointer;
+}
+
+h6 {
+  font-weight: normal !important;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px black inset;
+  -webkit-text-fill-color: white;
+}
+
+.hover {
+  cursor: pointer;
+}
+
+progress {
+  width: 100%;
+  left: 0;
+  z-index: 12;
+  display: block;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.9) !important;
+  color: #ec4486 !important;
+}
+
+progress[value] {
+  border: none;
+}
+
+progress[value]::-moz-progress-bar {
+  background: #ec4486;
+}
+
+progress::-webkit-progress-bar {
+  background: rgba(255, 255, 255, 0.9);
+}
+
+progress::-webkit-progress-value {
+  background: #ec4486;
+}
+
+.show-on-hover {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+button {
+  height: 35px;
+  border: 1px solid white;
+  border-radius: 5px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: $TVCbutton-bg-color;
+  color: $button-text-color;
+
+  &.selected {
+    color: $button-text-color;
+  }
+
+  /*&:hover {
+  //  background-color: lighten( $button-bg-color, 20% );
+  //  color: lighten( $button-text-color, 20% );
+  //  border: 1px solid $text-color;
+  //}*/
+
+  &:disabled {
+    background-color: darken( $button-bg-color, 20% );
+    color: darken( $button-text-color, 20% );
+  }
+}
+
+.category-title {
+  display: flex;
+  justify-content: space-between;
+  h3 {
+    margin: 20px auto auto 0;
+  }
+}
+
+.align-content-right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.play-button {
+  width: 100%;
+
+  button {
+    width: 100%;
+    max-width: 480px;
+    font-size: 25px;
+    font-weight: bold;
+  }
+}
+
+.tab-button {
+  margin-right: 10px;
+  min-width: 50px;
+  padding: 0 10px;
+}
+
+.view-all-button-back {
+  border-radius: 0;
+  align-self: flex-end;
+  background: none;
+  font-size: 18px;
+  border: none;
+  padding: 0;
+
+  &::before {
+    content: '\2039';
+    display: inline-block;
+    color: $text-color;
+    transform: scale(2.5);
+    margin-left: 10px;
+    padding: 0px 3px 3px 0px;
+    transition: color 0.3s ease;
+  }
+
+  &:hover::before {
+    color: $TVCbutton-color;
+  }
+
+}
+
+.view-all-button {
+  border-radius: 0;
+  align-self: flex-end;
+  background: none;
+  font-size: 18px;
+  border: none;
+  padding: 0;
+
+  &::after {
+    content: '\203A';
+    display: inline-block;
+    color: $text-color;
+    transform: scale(2.5);
+    margin-left: 10px;
+    padding: 0px 3px 3px 0px;
+    transition: color 0.3s ease;
+  }
+
+  &:hover::after {
+    color: $TVCbutton-color;
+  }
+}
+
+.show-more-button {
+  margin: 0 auto;
+  display: block;
+}
+
+.align-content-right {
+  align-content: flex-end;
+}
+
+// TODO: create a .scss specific for movie cards and in-carousel images
+.item-image {
+  min-height: 100px;
+  min-width: 100px;
+  box-shadow: 1px 1px 3px 1px #20202F;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+}
+
+.genre-selection {
+  height: 35px;
+  margin: 0 10px;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0;
+    height:100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    &::-webkit-scrollbar {
+      width: 15px;
+      max-height: 15px;
+      background-color: #232323;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 16px;
+      background-color: #383838;
+      border: 4px rgba(35, 35, 35, 1) solid;
+    }
+    scrollbar-face-color: #383838;
+    scrollbar-track-color: #232323;
+    scrollbar-highlight-color: #383838;
+    scrollbar-arrow-color: #383838;
+    scrollbar-shadow-color: #383838;
+  }
+
+  li {
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 7px;
+
+    &.selected,
+    &:hover {
+      color: $TVCprimary-color;
+    }
+  }
+}
+
+img[data-src],
+img[data-srcset] {
+  display: block;
+  min-height: 1px;
+}

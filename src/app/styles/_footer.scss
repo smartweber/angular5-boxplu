@@ -1,0 +1,193 @@
+#footer-container {
+  max-width: 1320px;
+
+  @include tablet {
+    margin: 0 auto;
+  }
+
+  #footer-first {
+    margin-top: 16px;
+
+    #footer-menu {
+      display: inline-block;
+      font-size: 14px;
+      color: $text-color;
+      margin-left: 24px;
+
+      a {
+        margin-right: 30px;
+        color: $link-color;
+        text-decoration: none;
+
+        &:hover {
+          color: $link-hover-color;
+        }
+      }
+    }
+
+    #footer-logo {
+      display: inline-block;
+      float: right;
+      margin-right: 36px;
+
+      img {
+        width: 127px;
+        vertical-align: middle;
+      }
+
+    }
+  }
+
+  #copyright {
+    font-size: 14px;
+    color: #d0d0d0;
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+
+
+}
+
+.app-footer {
+  position: absolute;
+  bottom: 0;
+  font-size: 14px;
+  width: 100%;
+  //height: 103px;
+  color: $text-color;
+  background-color: $footer-color;
+  border: transparent;
+  box-sizing: border-box;
+  a:visited {
+    color: $link-visited-color;
+  }
+
+  a:link {
+    color: $link-color;
+  }
+
+  a:hover {
+    color: $link-hover-color;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    background-color: white;
+    padding: 10px 10px;
+
+    @include phablet {
+      padding: 10px 40px;
+    }
+
+    @include tablet {
+      padding: 10px 80px;
+    }
+
+    @include desktop {
+      padding: 10px 120px;
+    }
+
+    .social-media-container {
+      @include tablet {
+        display: none;
+      }
+    }
+  }
+
+  .footer-bottom {
+    padding-left: 8%;
+    height: 245px;
+    background-color: $footer-color;
+
+    @include tablet {
+      height: 200px;
+    }
+
+    ul {
+      padding: 0px;
+      text-align: justify;
+      float: left;
+
+      li {
+        margin-bottom: 10px;
+        margin-right: 40px;
+        font-size: 16px;
+        @include tablet {
+          display: inline-block;
+          margin-right: 20px;
+        }
+      }
+    }
+
+    p {
+      clear: both;
+      padding-right: 30px;
+      @include tablet {
+
+      }
+    }
+
+    .social-media-container {
+      display: none;
+      float:right;
+      margin-top: 10px;
+      margin-right: 30px;
+
+      @include tablet {
+        display: block;
+      }
+
+      @include desktop {
+        margin-right: 40px;
+      }
+
+      input {
+        border: solid 1px white;
+        color: white;
+        background-color: $bg-dark-color;
+        &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+          color: white;
+        }
+        &::-moz-placeholder { /* Firefox 19+ */
+          color: white;
+        }
+        &:-ms-input-placeholder { /* IE 10+ */
+          color: white;
+        }
+        &:-moz-placeholder { /* Firefox 18- */
+          color: white;
+        }
+      }
+
+      button {
+        background-color: white;
+        color: $bg-dark-color;
+        border: solid 1px white;
+      }
+    }
+
+  }
+
+  .footer-left {
+    float: left;
+  }
+
+  .footer-right {
+    float: right;
+  }
+}
+
+.static-container {
+  width: calc(100% - 40px);
+  overflow: hidden;
+  margin: 0px 20px;
+  @include tablet {
+    width: 100%;
+    overflow: hidden;
+    margin: 0px;
+  }
+}

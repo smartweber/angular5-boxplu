@@ -1,0 +1,18 @@
+<div class="category-title">
+  <button class="view-all-button-back" (click)="goBack()">Back</button>
+</div>
+
+<div class="genre-selection">
+  <ul>
+    <li (click)="changeGenre()" [class.selected]="currentGenre == undefined">
+      All
+    </li>
+    <li *ngFor="let el of genres" (click)="changeGenre(el.slug)" [class.selected]="currentGenre == el.slug">
+      {{el.name}}
+    </li>
+  </ul>
+</div>
+
+<app-listing *ngIf="data" [(data)]="data.blocks[0].widgets[0]"></app-listing>
+
+<button (click)="getNextPage()" class="show-more-button" *ngIf="data?.blocks[0].widgets[0].playlist.hasOwnProperty(contents) && data?.blocks[0].widgets[0].playlist.contents[0].length < contentLength">Show more</button>

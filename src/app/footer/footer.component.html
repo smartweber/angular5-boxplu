@@ -1,0 +1,12 @@
+<div id="footer-first">
+  <div id="footer-menu">
+    <a *ngIf="hasSubscriptions" routerLink="pricing" (click)="onClick()">{{globals.strings.SUBSCRIPTIONS_PLAN_TITLE || "Subscription Plans"}}</a>
+    <a *ngIf="hasTermsConditions" routerLink="settings/terms-conditions" (click)="onClick()">{{globals.strings.SETTINGS_TERMS_AND_CONDITIONS}}</a>
+    <a *ngIf="hasHelp" routerLink="help" (click)="onClick()">{{globals.strings.SETTINGS_SCREEN_HELP}}</a>
+    <a *ngIf="hasFaq" routerLink="faq" (click)="onClick()">{{globals.strings.SETTINGS_SCREEN_FAQ}}</a>
+    <!--<a>Item5</a>-->
+  </div>
+  <div id="footer-logo"><img src="{{globals.settings.logo_image.url}}"></div>
+</div>
+<div style="clear: both"></div>
+<div id="copyright">Copyright 2018 - TVAPP agency.com</div>

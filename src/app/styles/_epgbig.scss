@@ -1,0 +1,223 @@
+.standard-epg {
+  display: none;
+  transition: opacity 1s ease;
+
+  @include tablet {
+    display: block;
+    margin-bottom: 100px;
+  }
+}
+
+#standard-epg-container {
+  display: block;
+  position: relative;
+  top: 36px;
+  max-width: 1280px;
+
+  .channels {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    height: 44px;
+    margin-top: 0;
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  .channel-logo {
+    width: 115px;
+    height: 100%;
+    display: inline-block;
+    float: left;
+    position: relative;
+
+    img {
+      cursor: pointer;
+      width: 95px;
+      @include vertical-align;
+      -moz-user-select: none;
+      -khtml-user-select: none;
+      -webkit-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -o-user-select: none;
+    }
+  }
+
+  .shows {
+    float: left;
+    position: absolute;
+    left: 100px;
+    width: 100%;
+    height: 44px;
+    vertical-align: middle;
+    overflow: hidden;
+
+    .element {
+      height: 39px;
+      display: block;
+      position: absolute;
+
+      div {
+        height: 100%;
+        margin: 0;
+        color: white;
+        display: inline-block;
+        font-size: 0.85em;
+        line-height: 39px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .show-title-big {
+        height: 100%;
+        cursor: pointer;
+        display: inline-block;
+        position: absolute;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 0 5px;
+        color: $TVCprimary-color;
+        white-space: nowrap;
+        margin: 0;
+        vertical-align: middle;
+        background-color: rgba(147, 182, 189, 0.2);
+
+        span {
+          width: 100%;
+          margin-top: 0px;
+          position: relative;
+          transition: transform 0.2s ease;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          -moz-user-select: none;
+          -khtml-user-select: none;
+          -webkit-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
+          -o-user-select: none;
+          display: block;
+          opacity: 0.6;
+
+          img {
+            width: 15px;
+            margin-left: 10px;
+
+            @include vertical-align;
+          }
+        }
+      }
+
+      .show-title-big.playing {
+        background-color: rgba(255, 255, 255, 0.5);
+
+        span {
+          opacity: 1;
+        }
+
+      }
+
+      .show-title-big.selected {
+        background-color: rgba(255, 255, 255, 0.77);
+        color: $TVCprimary-color;
+
+        span {
+          opacity: 1;
+        }
+
+      }
+
+      .show-title-big:hover {
+        color: $TVCprimary-color;
+
+        span {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .shows-inner {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 8000px;
+    left: 0;
+    transition: transform 0.2s ease;
+  }
+}
+
+.epg-control-right,
+.epg-control-left {
+  position: absolute;
+  width: 10px;
+  height: 16px;
+  cursor: pointer;
+  display: inline-block;
+  background-image: url("assets/ic_arrow_sidemenu.png");
+  background-size: 10px 16px;
+
+  @include vertical-align;
+
+  right: -1px;
+  z-index: 10;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -ms-user-select: none;
+}
+
+.epg-control-left {
+  left: 99px !important;
+  background-image: url("assets/ic_arrow_sidemenu_left.png");
+}
+
+.time {
+  width: calc(100% - 180px);
+  max-width: 1177px;
+  left: 140px;
+  overflow: hidden;
+  height: 30px;
+  position: absolute;
+  color: $TVCprimary-color;
+  font-size: 14px;
+  border-bottom: solid 2px rgba(182, 194, 202, 0.8);
+
+  @include desktop {
+    width: calc(100% - 254px);
+    left: 177px;
+  }
+
+  @include desktop-intermediate {
+    width: calc(100% - 190px);
+    max-width: 1180px;
+    left: unset;
+    overflow: hidden;
+    margin-left: 100px;
+    position: absolute;
+  }
+
+  @include desktop-epg-fix {
+    width: 100%;
+  }
+}
+
+.time-inner {
+  width: 4580px;
+  position: relative;
+  transition: transform 0.2s ease;
+
+  div {
+    margin-left: -18.045px;
+    position: absolute;
+    display: inline;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -o-user-select: none;
+  }
+}

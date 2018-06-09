@@ -1,0 +1,53 @@
+<!-- BLOCKS -->
+<div id="menuTitle">{{globals.pageTitle}}</div>
+<div *ngFor="let block of data?.screen.blocks" class="block-container">
+  <!-- BUTTONS FOR FILTERING ON TAB BLOCKS -->
+  <div class="tab-container" *ngIf="block.block_type=='tab'">  <!-- removed && globals.tvcableGroup_asset_types!=0 -->
+    <div *ngFor="let playlist of block.widgets; let i = index"
+         [attr.data-index]="i"
+         (click)="filter(block, i)"
+         class="tab"
+         [class.selected]="i==block.selected">
+      {{playlist.playlist.name}}
+    </div>
+    <div class="tab"></div>
+  </div>
+
+  <!-- BUTTONS FOR FILTERING ON COMBO BLOCKS -->
+  <div *ngIf="block.block_type=='combobox'" class="combo-box-container">
+    <select (change)="filter(block, $event.target.value)">
+      <option value={{i}} *ngFor="let playlist of block.widgets; let i = index" [attr.data-index]="i"
+              (click)="filter(block, i)">
+        {{playlist.playlist.name}}
+      </option>
+    </select>
+  </div>
+
+  <!-- LAYOUTS -->
+  <div *ngFor="let widget of block.widgets; let i = index" [attr.data-index]="i"
+       class="layout-container">
+    <div *ngIf="i==block.selected || block.selected===true">
+
+      <div class="category-title"
+           [class.align-content-right]="block.block_type =='tab' || block.block_type=='combo'">
+        <h3 *ngIf="block.block_type !='tab' && block.block_type!='combo'">{{widget.playlist.name}}</h3>
+        <button class="view-all-button"
+                *ngIf="widget.layout.view_all_position == 'first' || widget.layout.view_all_position=='top'"
+                (click)="viewAll(widget.playlist.slug)">View all</button>
+      </div>
+      <app-carousel [data]="widget"
+                    *ngIf="widget.layout.layout_type.indexOf('carousel') > -1"></app-carousel>
+
+      <app-listing [data]="widget"
+                   *ngIf="widget.layout.layout_type=='grid'"></app-listing>
+
+      <div class="category-title align-content-right">
+        <button
+          *ngIf="widget.layout.view_all_position == 'last' || widget.layout.view_all_position=='bottom'"
+          (click)="viewAll(widget.playlist.slug)">View all</button>
+      </div>
+
+    </div>
+  </div>
+
+</div>

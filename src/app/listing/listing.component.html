@@ -1,0 +1,17 @@
+<div
+  class="listing-container"
+  [style.opacity]="showCarousel ? 1 : 0"
+  dir="{{data.layout.presentation_order == 'RTL' ? 'RTL' : 'LTR'}}">
+  <app-playlist-element *ngFor="let el of data.playlist.contents; trackBy: trackByContent"
+                        [data]="el"
+                        [layout]="data.layout"
+                        [style.width]="colSize"
+                        class="listing-item">
+  </app-playlist-element>
+<!-- <div>ruiteste</div>  -->
+    <div *ngIf="isLoading" class="wait">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+</div>

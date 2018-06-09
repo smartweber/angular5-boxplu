@@ -1,0 +1,19 @@
+<div *ngIf="isVisible" class="popup-container">
+  <div class="popup-close" (click)="isVisible=false"></div>
+  <div class="popup-content">
+    <div>
+      <span class="close-button" (click)="isVisible=false"></span>
+      <div class="divEnterPin">
+        <p class="pEnterPin">{{globals.strings.INFO_PIN_INSERTION}}</p>
+        <input #ctrl="ngModel" [(ngModel)]="thePin" class="iEnterPin" type="text" (keyup)="handleKey($event)" size="4" min="" maxlength="4">
+        <p class="pRecoverPin"><a (click)="recoverPin()">{{globals.strings.SCREEN_RECOVER_PIN}}</a></p>
+        <div class="divBtnPin">
+            <button class="btnEnterPin" (click)="enterPin()">{{globals.strings.PIN_NEW}}</button>
+        </div>
+        <div class="divPinErr">
+            <p *ngIf="showErr" class="pPinErr">{{globals.strings.ERROR_PIN_SHORT}}</p>
+        </div>
+    </div>
+  </div>
+</div>
+</div>

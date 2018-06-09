@@ -1,0 +1,18 @@
+<div id="pairingWrapper">
+  <form #pairingFrm="ngForm" (ngSubmit)="onSubmit()">
+    <!-- a variável pairingFrm é agora uma referência para a diretiva-ngForm deste <form> e monitoriza o estado dos -->
+    <!-- vários elementos que este <form> contém e que usem a diretiva-ngModel; neste caso só o <input> -->
+    <!-- TODO: replace with api key -->
+    <p>{{globals.strings.SETTINGS_SCREEN_PAIRING_CODE}}</p>
+    <div class="vspacer">
+      <input id="pairingInput" name="pairing" type="text" [(ngModel)]="pairingCode" (focus)="responded=false" required>
+      <!-- quando o <input> usa o [{ngModel}] entâo tem de se definir no <input> um name tag único, neste caso: name="pairing" (que não é usado) -->
+      <!-- se o <input> tem focus entâo apaga a mensagem, i.e. coloca responded=false -->
+      <button type="submit" class="butn butn-success" [disabled]="!pairingFrm.form.valid">{{globals.strings.BUTTON_CONFIRM}}</button>
+      <!-- aqui é usada a variável da diretiva-ngForm e testado o seu membro ºvalidº -->
+    </div>
+  </form>
+  <div id="pairingMsg">
+    <div *ngIf="responded" >{{message}}</div>
+  </div>
+</div>

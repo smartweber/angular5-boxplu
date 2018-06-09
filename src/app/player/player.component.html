@@ -1,0 +1,32 @@
+<div class="player-container">
+
+  <video class="video-js" controls preload="auto" data-setup="{}" id="player">
+  </video>
+
+  <!-- Only shown if the user moves the mouse over the player -->
+  <div id="playerTopBar" [@slideInOut]="barsState">
+    <table>
+      <tr>
+        <td>
+          <button id="playerBack" (click)="returnToDetails()">
+            <span class="fa-stack">
+              <i class="fa fa-circle-thin fa-stack-2x"></i>
+              <i class="fa fa-chevron-left" fa-stack-1x></i>
+            </span>
+          </button>
+        </td>
+
+        <td>{{data?.asset.name}}</td>
+
+        <td>
+          <i class="fa fa-gear"></i>
+        </td>
+      </tr>
+    </table>
+
+  </div>
+
+  <div id="playerBottomBar" *ngIf="showBars">
+
+  </div>
+</div>

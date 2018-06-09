@@ -1,0 +1,9 @@
+<div id="outerTermsHelpFAQWrapper">
+  <h4 *ngIf="hasBreadCrums"><div class="breadCrumb" (click)="crumbClick(globals.pageTitleSlug)">{{globals.strings.SCREEN_SETTINGS}}</div> <i class="fa fa-arrow-right" aria-hidden="true"></i> {{globals.strings.SETTINGS_TERMS_AND_CONDITIONS}}</h4>
+  <div class="TermsConditionsWrapper">
+    <h3 style="text-align: center">{{globals.strings.SETTINGS_TERMS_AND_CONDITIONS}}</h3>
+    <div class="InfoPadder">
+      <div class="InfoWrapper">{{this.globals.settings.terms_conditions_slug}}
+      </div>
+    </div>
+  </div></div>

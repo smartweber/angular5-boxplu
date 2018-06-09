@@ -1,0 +1,50 @@
+@font-face {
+  font-family: "OpenSans";
+  src: url('assets/fonts/OpenSans-Regular.ttf')
+}
+
+@font-face {
+  font-family: "OpenSans-Semibold";
+  src: url("assets/fonts/OpenSans-Semibold.ttf");
+}
+
+
+
+//Color variables
+$primary-color: #ff5e00;
+$focus-color: #fff;
+$menu-icon-color: #d0d0d0;
+$text-color: #ffffff;
+$highlight-text-color: #fff;
+$bg-color: #002144;
+$header-color: #205497;
+$footer-color: #254d8e;
+$bg-dark-color: #ff5e00;
+$button-color: #9b9b9b;
+$button-bg-color: #48689c;
+$button-text-color: #e0e0ef;
+$input-bg-color: #263852;
+$input-text-color: #d0d0d0;
+$error-msg-color: #ed4728;
+$success-msg-color: #00aa00;
+
+$link-color: #d0d0d0;
+$link-hover-color: #fff;
+$link-visited-color: #da2350;
+
+$social-icon-bg: #7f94c8;
+$social-icon-color: #d0d0d0;
+$social-icon-highlight-color: #fff;
+
+
+//Supported screen sizes (excluding the minimum, 360px)
+$phablet-width: 480px;
+$tablet-width: 768px;
+$desktop-width: 1024px;
+$desktop-big-width: 1280px;
+$desktop-intermediate-width: 1366px;
+$desktop-epg-fix-width: 1560px;
+$desktop-pre-hd-width: 1650px;
+$desktop-hd-width: 1920px;
+
+

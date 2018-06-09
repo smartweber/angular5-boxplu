@@ -1,0 +1,119 @@
+/* Style for the profile drawer */
+
+// Mobile first
+// @Notes: animations for the drawer are handled by _animations/profile-drawer.animation.ts
+#profile-drawer {
+  position: fixed;
+  top: 55px;
+  left: -360px;
+  width: 100vw;
+  min-width: 360px;
+  height: 90vh;
+  background: linear-gradient(#0f123f 75%, #2f3191 25%);
+  color: $text-color;
+  z-index: 9999;
+  border: 1px solid $text-color;
+  padding: 20px;
+
+
+  @include tablet {
+    position: absolute;
+    top: 50px;            // Adjust this to minus the height of the search input
+    left: auto;
+    right: -2px;
+    width: auto;
+    min-width: 360px;
+    height: 92vh;
+  }
+
+  .profilesListTbl {
+    width: 100%;
+    border: 0;
+    background: none;
+    margin-top: 34px;
+    margin-left: 5px;
+    margin-right: 5px;
+    margin-bottom: 32px;
+
+    .profilesListRow {
+      height: 40px;
+      vertical-align: middle;
+    }
+
+    .profilesListName {
+      padding-left: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+      text-align: left;
+    }
+
+    .profilesListAvatar {
+      vertical-align: middle;
+      width: 76px;
+      height: 76px;
+
+      img {
+        width: 48px;
+        height: 48px;
+        vertical-align: middle;
+
+        @include tablet {
+          width: 72px;
+          height: 72px;
+
+        }
+      }
+    }
+
+    .profilesListEditIcon, .profilesListTrashIcon {
+      font-size:20px;
+      vertical-align: middle;
+      color: #696969;
+    }
+
+    .profilesListEditIcon {
+      text-align: right;
+      padding-right: 7px;
+    }
+
+
+  }
+
+  .profileDetailsTbl {
+    width: 100%;
+    border: 0;
+    background: none;
+    margin-top: 42px;
+    margin-right: 16px;
+    margin-bottom: 32px;
+    color: #787878;
+
+    td:first-child {
+      width:30%;
+    }
+  }
+
+  #addProfile {
+    text-align: center;
+
+    #addProfileIcon {
+      font-size: 64px;
+      color: #696969;
+    }
+  }
+
+
+  #signOutBtn {
+    font-size: 14px;
+    border-radius: 0;
+    background-color: #9b9b9b;
+    color: #fff;
+    margin-bottom: 10px;
+    padding :6px;
+
+    &:hover {
+      background-color: $bg-dark-color;
+    }
+  }
+}

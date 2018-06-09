@@ -1,0 +1,32 @@
+/* TVCABLE specific styles */
+$tvcable-main-background-image:"assets/main_bg.svg";
+$tvcable-main-header-background-image: "assets/tvcable_main_header.svg";
+$tvcable-logo-area-background-image:"assets/tvcable_header_left.svg";
+
+
+@mixin tvcable-main-background-image {
+  background-image: url($tvcable-main-background-image);
+  background-size: cover;
+}
+
+@mixin tvcable-main-header-background-image {
+  background-image: url($tvcable-main-header-background-image);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@mixin tvcable-logo-area-background-image {
+  background-image: url($tvcable-logo-area-background-image);
+  background-size: cover;
+}
+
+$TVCborder-input: none;
+$TVCbutton-bg-color: transparent;
+$TVCinput-bg-color: rgba(216, 216, 216, 0.2);
+$TVCinputFrm-bg-color: #263852;
+$TVCprimary-color: #7f94c8;
+$TVCloading: #ee295e; /*#e62758; */
+$TVCbutton-color: transparent;
+$TVCarrow-bg-color: rgba(0, 0, 0, 0.5);
+$TVCplay-Bgcolor: #9b9b9b;
+$TVCplay-arrow: #272737;

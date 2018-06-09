@@ -1,0 +1,35 @@
+<div class="playlist-element"
+  [ngStyle]="{'border-width': layout.element_vertical_spacing / 2 + 'px ' + layout.element_horizontal_spacing / 2 + 'px', 'margin-top': (layout.metadata_position==='top' && layout.show_elements_title!='none' ?2:0)+'em'}">
+  <a *ngIf="!extraFun" routerLink="/movie/{{data.slug}}">
+    <img src="{{placeholder}}" data-src="{{imageUrl}}" (error)="setNoImagePic()" class="item-image">
+    <!-- {{layout.move_after_behaviour}} -->
+    <div class="rating"
+         *ngIf="layout.show_elements_rating!='none'"
+         [class.show-on-hover]="layout.show_elements_rating =='focus'">{{data.rating}} <img
+      src="assets/star.png"></div>
+    <!--<progress max="100"-->
+              <!--value="{{data.progress}}"-->
+              <!--*ngIf="layout.show_elements_view_progress!='none'"-->
+              <!--[class.show-on-hover]="layout.show_elements_view_progress =='focus'"></progress>-->
+  </a>
+  <div *ngIf="!extraFun" [ngStyle]="{'height': '0', 'overflow': 'visible'}" [ngClass]="layout.style +' '+(layout.show_elements_title!='none' ?layout.metadata_position:'')" [class.show-on-hover]="layout.show_elements_title =='focus'">
+
+    <div *ngIf="layout.show_elements_title!='none'" class="playElementTitle"
+        [class.show-on-hover]="layout.show_elements_title =='focus'">
+      <b *ngIf="layout.show_elements_favorite!='none'"
+         [class.show-on-hover]="layout.show_elements_favorite =='focus'">
+        <img src="assets/favourite.png">
+      </b>{{data.name}}
+    </div>
+  </div>
+  <div *ngIf="extraFun" class="userFormat" (click)="data.view.callback(data.view.param, data.id)">
+    <img *ngIf="data.view.type=='image'" src="{{placeholder}}" data-src="{{imageUrl}}" (error)="setNoImagePic()" class="item-image">
+    <div>{{data.view.text}}</div>
+  </div>
+
+</div>
+
+<div *ngIf="showExtraInfo" class="extra-info">
+  <h1>{{data.name}}</h1>
+  <p>{{data.short_description}}</p>
+</div>

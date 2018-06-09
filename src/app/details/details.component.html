@@ -1,0 +1,467 @@
+<!-- Based on Zeplin mockups -->
+<!-- LAYOUT A -->
+<!-- @Notes: Layout type A doesn't have "related" list -->
+<div class="details-container details-a" *ngIf="layoutType=='details_page_A'">
+  <div class="details-content flex-grid">
+    <div class="details-title col-100">{{data?.asset.name}}<span class="detailsArrow"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>{{detailsTitle}}</div>
+    <div class="col-100 details-layout-a-image-big">
+      <img data-src="{{coverImage}}">
+      <div *ngIf="hasTrailer" class="moviesTrailer">
+        <a>
+        <i class="fa fa-play" aria-hidden="true"></i><br>
+        {{globals.strings.DETAILS_SCREEN_BUTTON_TRAILER}}
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Table-based approach. right column contains another table -->
+  <table id="layoutA_contentDetailsTbl">
+    <tr>
+      <!-- LEFT COLUMN -->
+      <td id="layoutA_contentDetails">
+        <span class="movie_title">{{data?.asset.name}}</span>
+        <br/>
+        <a innerHtml={{buildRating()}} (click)="showRatingPopup()"></a> <br/>
+        <!-- Production year | length | genres | age rating -->
+        {{data.asset.production_year}} |
+        {{minutesToTime(data.asset.length)}} |
+        {{getAgeRating()}} <br/>
+
+        <!-- Directors -->
+        <div class="cast"  *ngIf="data?.asset.cast?.directors && data?.asset.cast?.directors.length > 0">
+          <ul>
+            <label class="directors">{{globals.strings.DETAILS_SCREEN_DIRECTORS}}:</label>
+            <li *ngFor="let element of data?.asset.cast.directors">{{element.name}}</li>
+          </ul>
+        </div>
+
+        <!-- Writers -->
+        <div class="cast" *ngIf="data?.asset.cast?.writers && data?.asset.cast?.writers.length > 0">
+          <ul>
+            <label>{{globals.strings.DETAILS_SCREEN_WRITERS}}:</label>
+            <li *ngFor="let element of data?.asset.cast.writers">{{element.name}}</li>
+          </ul>
+        </div>
+
+        <!-- Cast -->
+        <div class="cast"  *ngIf="data?.asset.cast?.actors && data?.asset.cast?.actors.length > 0">
+          <ul>
+            <label class="actors">{{globals.strings.DETAILS_SCREEN_ACTORS}}:</label>
+            <li *ngFor="let element of data?.asset.cast.actors">{{element.name}}</li>
+          </ul>
+        </div>
+
+        <!-- Movie long description -->
+        <div class="details-info">
+          <p>{{data?.asset.long_description}}</p>
+        </div>
+      </td>
+
+      <!-- RIGHT COLUMN -->
+      <td id="layoutA_contentShareBtns" align="right">
+        <table>
+          <tr>
+            <td colspan="4" class="icon_buttons_col">
+              <button class="icon_button"
+                      *ngFor="let btn of data?.screen.layout.buttons_positioning.icon_button"
+                      [innerHtml]= 'btn.action=="favorite" && isFavourite ?  btn.on_image : btn.off_image'
+                      (click)="iconBtnClick(btn.action)"
+                      [ngClass]="{'favourite': btn.action=='favorite' && isFavourite}">
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td class="full_icon_buttons_col">
+              <button class="full_button"
+                      *ngFor="let btn of data?.screen.layout.buttons_positioning.full_button"
+                      innerHtml={{buildFullBtnHtml(btn.on_image,btn.name)}}
+                      (click)="fullBtnClick(btn.action)">
+                {{btn.name}}
+              </button>
+            </td>
+          </tr>
+        </table>
+
+
+      </td>
+    </tr>
+  </table>
+
+
+  <div class="cast" *ngIf="data?.asset.cast?.music_composers && data?.asset.cast?.music_composers.length > 0">
+    <ul>
+      <label>{{globals.strings.DETAILS_SCREEN_MUSIC_COMPOSER}}:</label>
+      <li *ngFor="let element of data?.asset.cast.music_composers">{{element.name}}</li>
+    </ul>
+  </div>
+
+  <div class="cast" *ngIf="data?.asset.cast?.singers && data?.asset.cast?.singers.length > 0">
+    <ul>
+      <label>{{globals.strings.DETAILS_SCREEN_SINGERS}}:</label>
+      <li *ngFor="let element of data?.asset.cast.singers">{{element.name}}</li>
+    </ul>
+  </div>
+
+  <div class="cast" *ngIf="data?.asset.cast?.song_writers && data?.asset.cast?.song_writers.length > 0">
+    <ul>
+      <label>{{globals.strings.DETAILS_SCREEN_SING_WRITERS}}:</label>
+      <li *ngFor="let element of data?.asset.cast.song_writers">{{element.name}}</li>
+    </ul>
+  </div>
+
+<!--  <a routerLink="play" class="play-button"><button>{{globals.strings.DETAILS_SCREEN_BUTTON_PLAY}}</button></a>-->
+
+</div>
+
+
+<!-- LAYOUT B -->
+<div class="details-container details-b" *ngIf="layoutType=='details_page_B'">
+  <div class="details-content flex-grid">
+    <div class="details-title">{{data?.asset.name}}<span class="detailsArrow"><i class="fa fa-arrow-right" aria-hidden="true"></i></span>{{globals.strings.DETAILS_SCREEN_DETAILS_LABEL}}</div>
+    <div class="col-100 details-layout-b-image-big" [ngStyle]="{'background-color': data?.screen.layout.background.color}">
+      <!--
+      <img class="img-responsive" *ngIf="data?.asset.type=='movies'" src="{{data?.asset.images.banner.url}}">
+      <img class="img-responsive" *ngIf="data?.asset.type=='series' || data?.asset.type=='seasons'" src="{{data?.asset.images.backdrop.url}}">
+      <img class="img-responsive" *ngIf="data?.asset.type=='channels'" src="{{data?.asset.image.url}}">
+      -->
+      <img class="img-responsive" data-src="{{coverImage}}">
+      <div *ngIf="hasTrailer" class="moviesTrailer">
+        <a>
+          <i class="fa fa-play" aria-hidden="true"></i><br>
+          {{globals.strings.DETAILS_SCREEN_BUTTON_TRAILER}}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- this goes right, so must appear first :P -->
+  <div class="movie-all-buttons">
+    <table>
+      <tr>
+        <td colspan="4" class="icon_buttons_col">
+          <button class="icon_button"
+                  *ngFor="let btn of data?.screen.layout.buttons_positioning.icon_button"
+                  (click)="iconBtnClick(btn.action)"
+                  [innerHtml]= 'btn.action=="favorite" && isFavourite ?  btn.on_image : btn.off_image'
+                  [ngClass]="{'favourite': btn.action=='favorite' && isFavourite}">
+          </button>
+        </td>
+      </tr>
+      <tr>
+        <td class="full_icon_buttons_col">
+          <div style="display: inline-block" *ngFor="let btn of data?.screen.layout.buttons_positioning.full_button">
+            <button class="full_button"
+                    *ngIf="!userIsEntitled || btn.action=='play'"
+                    innerHtml={{buildFullBtnHtml(btn.on_image,btn.name)}}
+                    (click)="fullBtnClick(btn.action)">
+              {{btn.name}}
+            </button>
+
+          </div>
+
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+  <div class="movie-details">
+    <table>
+      <tr>
+        <td class="movie-poster"><img src="{{data?.asset.images.poster.url}}"></td>
+        <td class="movie-info">
+          <a innerHtml={{buildRating()}} (click)="showRatingPopup()"></a> <br/>
+          <!-- Production year | length | genres | age rating -->
+          {{data.asset.production_year}} |
+          {{minutesToTime(data.asset.length)}} |
+          {{getAgeRating()}}
+
+          <!-- Directors -->
+          <div class="cast"  *ngIf="data?.asset.cast?.directors && data?.asset.cast?.directors.length > 0">
+            <ul>
+              <label class="directors">{{globals.strings.DETAILS_SCREEN_DIRECTORS}}:</label>
+              <li *ngFor="let element of data?.asset.cast.directors">{{element.name}}</li>
+            </ul>
+          </div>
+
+          <!-- Cast -->
+          <div class="cast"  *ngIf="data?.asset.cast?.actors && data?.asset.cast?.actors.length > 0">
+            <ul>
+              <label class="actors">{{globals.strings.DETAILS_SCREEN_ACTORS}}:</label>
+              <li *ngFor="let element of data?.asset.cast.actors">{{element.name}}</li>
+            </ul>
+          </div>
+
+          <!-- Movie long description -->
+          <div class="details-info">
+            <p>{{data?.asset.long_description}}</p>
+          </div>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="seasonsWrapper" *ngIf="hasSeasons">
+    <div class="seasonsTitle">{{globals.strings.ASSET_RELATED_SEASON_TITLE}}</div>
+    <app-carousel [data]="seasonsList" [isSeasons]="true"></app-carousel>
+  </div>
+
+  <!-- Related content -->
+  <div class="relatedWrapper" *ngIf="hasRelated">
+    <div class="relatedTitle">{{globals.strings.ASSET_RELATED_TITLE}}</div>
+    <div class="carousel-container">
+      <app-carousel [data]="relatedList"></app-carousel>
+    </div>
+  </div>
+</div>
+
+<!-- LAYOUT D -->
+<!-- <a routerLink="/{{globals.pageTitle}}">{{globals.pageTitle}}</a>  <a routerLink="/{{globals.pageTitle}}">{{data?.asset.name}}</a> -->
+<div class="details-container details-d" *ngIf="layoutType=='details_page_D'">
+  <div class="details-primary-title"><div class="breadCrumb" (click)="crumbClick(globals.pageTitleSlug)">{{globals.pageTitle}}</div> <span class="detailsArrow"><i class="fa fa-arrow-right" aria-hidden="true"></i></span> {{data?.asset.name}} </div>
+  <div class="details-content flex-grid2">  <!-- retirei  flex-grid -->
+    <div class="col-60 details-layout-D-image-banner" [ngStyle]="{'background-color': data?.screen.layout.background.color}">
+      <div style="position: relative"><img class="img-responsive" data-src="{{coverImage}}" (error)="setNoImageCover()">
+        <div  class="playArrow" (click)="fullBtnClick('play')"></div>
+      </div>
+      <!--
+      <div *ngIf="hasTrailer" class="moviesTrailer">
+        <a>
+          <i class="fa fa-play" aria-hidden="true"></i><br>
+          {{globals.strings.DETAILS_SCREEN_BUTTON_TRAILER}}
+        </a>
+      </div>
+      -->
+    </div>
+
+    <div class="col-40 movie-details-d">
+      <table class="movie-info">
+        <tr>
+          <td><div class="details-title-d">{{data?.asset.name}}</div></td>
+        </tr>
+        <tr>
+            <td><div [style.display]="'inline'" [innerHtml]="buildRating()"></div><button class="rateBtn" (click)="showRatingPopup()">{{globals.strings.RATE_ASSET_TITLE}}</button></td>
+        </tr>
+
+        <tr>         <!-- Production year | length | genres | age rating -->
+          <td>
+            {{(data.asset.production_year==undefined || data.asset.production_year=='1900'?'':data.asset.production_year)}}
+            {{(data.asset.length==undefined || data.asset.length==0?'':' | ' + minutesToTime(data.asset.length))}}
+            {{(getAgeRating()=='N/A'?'':' | ' + getAgeRating())}}
+          </td>
+        </tr>
+
+        <tr>
+          <td>         <!-- Directors -->
+            <div class="cast"  *ngIf="data?.asset.cast?.directors && data?.asset.cast?.directors.length > 0">
+              <ul>
+                <li class="directors">{{globals.strings.DETAILS_SCREEN_DIRECTORS}}:</li>
+                <li class="listdirectors" *ngFor="let element of data?.asset.cast.directors">{{element.name}}</li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>         <!-- Cast -->
+            <div class="cast"  *ngIf="data?.asset.cast?.actors && data?.asset.cast?.actors.length > 0">
+              <ul>
+                <li class="actors">{{globals.strings.DETAILS_SCREEN_ACTORS}}:</li>
+                <li class="listactors" *ngFor="let element of data?.asset.cast.actors">{{element.name}}</li>
+              </ul>
+            </div>
+          </td>
+        </tr>
+
+        <tr>
+          <td>         <!-- Movie long description -->
+            <div class="details-info">
+              {{data?.asset.long_description}}
+            </div>
+          </td>
+        </tr>
+      </table>
+
+
+      <div class="movie-all-buttons">
+        <table>
+          <tr *ngIf="data.screen.layout.show_video_provider">
+            <img class="img-provider" [src]="providerImage" (error)="setNoImageProv()">
+          </tr>
+          <tr>
+            <td colspan="4" class="icon_buttons_col">
+              <button class="icon_button"
+                      *ngFor="let btn of data?.screen.layout.buttons_positioning.icon_button"
+                      (click)="iconBtnClick(btn.action)"
+                      [innerHtml]= 'btn.action=="favorite" && isFavourite ?  btn.on_image : btn.off_image'
+                      [ngClass]="{'favourite': btn.action=='favorite' && isFavourite}">
+              </button>
+            </td>
+          </tr>
+          <tr>
+            <td class="full_icon_buttons_col">
+              <!-- {{data?.screen.layout.buttons_positioning.full_button | json}}<br><br><br><br>  -->
+              <div style="display: inline-block" *ngFor="let btn of data?.screen.layout.buttons_positioning.full_button">
+                <button class="full_button"
+                        *ngIf="showFullButtons(entitlementsReady,btn.action)"
+                        innerHtml={{buildFullBtnHtml(btn.on_image,btn.name)}}
+                        (click)="fullBtnClick(btn.action)">
+                  {{btn.name}}
+                </button>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+<!-- {{data.screen.blocks[0].widgets[0].layout.show_playlist_title}} -->
+  <h4 *ngIf="hasSeasons && data.screen.blocks[0].widgets[0].layout.show_playlist_title == 1">{{globals.strings.ASSET_TYPE_SEASONS}}</h4>
+<!-- {{data.layout.move_after_behaviour}} -->
+  <div class="seasonsWrapper season_text" *ngIf="hasSeasons && seasonLayoutType==='season_title'">
+    <app-carousel [data]="seasonsList" [isSeasons]="true"></app-carousel>
+    <div *ngIf="!this.hasEpisodes" class="noEpisodes">{{(this.globals.strings.SEASON_EMPTY!=undefined?this.globals.strings.SEASON_EMPTY:'Hardcoded:No available season episodes')}}</div>
+  </div>
+
+  <div class="seasonsWrapper season_text" *ngIf="hasSeasons && seasonLayoutType==='season_number'">
+    <table class="seasonNumberTbl">
+      <td>{{globals.strings.SEASON_NUMBER_TITLE}}</td>
+      <td><app-carousel [data]="seasonsList" [isSeasons]="true"></app-carousel></td> <!-- removed [typeCarousel]="seasonstypeCarousel" (parentCallback)="detailsCallback($event[0],$event[1])" -->
+    </table>
+    <div *ngIf="!this.hasEpisodes" class="noEpisodes">{{(this.globals.strings.SEASON_EMPTY!=undefined?this.globals.strings.SEASON_EMPTY:'Hardcoded:No available season episodes')}}</div>
+  </div>
+
+  <div class="seasonsWrapper season_image" *ngIf="hasSeasons && seasonLayoutType==='playlist'">
+    <app-carousel [data]="seasonsList" [isSeasons]="true" ></app-carousel> <!-- (parentCallback)="detailsCallback($event[0],$event[1])" -->
+    <div *ngIf="!this.hasEpisodes" class="noEpisodes">{{(this.globals.strings.SEASON_EMPTY!=undefined?this.globals.strings.SEASON_EMPTY:'Hardcoded:No available season episodes')}}</div>
+  </div>
+
+  <table *ngIf="hasSeasons && hasEpisodes" class="seasonsEpisodesTbl">
+    <tr  *ngFor="let episode of episodesList.playlist.contents">
+        <!-- Call back functions -->
+        <td class="episodeImage">
+          <img [src]="episodeImg(episode.image.url)" (error)="episode.image.url=globals.API.slice(0,-4)+'uploads/placeholder/placeholder.png'">
+          <div  class="playArrow" (click)="playClicked(episode.id,episode.video.streams.url)"></div>
+        </td>
+        <td class="seasonsEpisodesCol">
+          {{episode.name}}<br>
+          {{episode.short_description}}
+        </td>
+        <td class="episode-share-icon">
+          <!-- <i class="fa fa-share-alt"></i>  -->
+          <button class="icon_button"
+                  (click)="iconBtnClick('share')"
+                  [innerHtml]= "isShared ?  data?.screen.layout.buttons_positioning.icon_button[0].on_image : data?.screen.layout.buttons_positioning.icon_button[0].off_image">
+          </button>
+        </td>
+    </tr>
+  </table><br>
+
+  <div class="relatedWrapper" *ngIf="hasRelated">
+    <div class="relatedTitle">{{globals.strings.ASSET_RELATED_TITLE}}</div>
+    <div class="carousel-container">
+      <app-carousel class="detailsRelatedCarousel" [data]="relatedList"></app-carousel>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- LAYOUT Z :P -->
+<div class="details-container details-b" *ngIf="layoutType=='details_page_Z'">
+  <div class="details">
+    <div class="details-content">
+      <div class="details-image">
+        <img data-src="{{data?.asset.images.poster.url}}">
+      </div>
+      <div class="details-info">
+        <h1>{{data?.asset.name}}</h1>
+        <p>{{data?.asset.long_description}}</p>
+        <a routerLink="play" class="play-button"><button>Play</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TODO: LAYOUT C -->
+
+<!-- TODO: LAYOUT D -->
+
+
+<!-- Fallback - No layout coming from API :S -->
+<div class="details-container details-b" *ngIf="layoutType==''">
+  <div class="details">
+    <div class="details-content">
+      <div class="details-image">
+        <img data-src="{{data?.asset.images.poster.url}}">
+      </div>
+      <div class="details-info">
+        <h1>{{data?.asset.name}}</h1>
+        <p>{{data?.asset.long_description}}</p>
+        <a routerLink="play" class="play-button"><button>Play</button></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- RATING MODAL -->
+<div *ngIf="ratingPopUpVisible" class="popup-container">
+  <div class="popup-close" (click)="ratingPopUpVisible=false"></div>
+  <div class="popup-content">
+    <div id="ratingContent">
+      <span class="close-button" (click)="ratingPopUpVisible=false"></span>
+
+      <h3 class="popup-title">{{globals.strings.RATE_ASSET_TITLE}}</h3>
+
+      <div class="popup-body">
+
+        <div *ngIf="data?.asset.rating===0">
+          <p>{{globals.strings.FIRST_TO_RATE_PROMPT}}</p>
+        </div>
+
+        <div class="ratingWrapper">
+          <fieldset class="rating">
+            <input type="radio"
+                   value="5"
+                   [name]="ratingStar"
+                   [checked]="rating===5" /><!-- [checked]="rating===5" />  -->
+            <label title="Rocks!" (click)='starClick(5)'>5 stars</label>
+
+            <input type="radio"
+                   value="4"
+                   [name]="ratingStar"
+                   [checked]="rating===4" />
+            <label title="Pretty good" (click)='starClick(4)'>4 stars</label>
+
+            <input type="radio"
+                   value="3"
+                   [name]="ratingStar"
+                   [checked]="rating===3" />
+            <label title="Meh" (click)='starClick(3)'>3 stars</label>
+
+            <input type="radio"
+                   value="2"
+                   [name]="ratingStar"
+                   [checked]="rating===2" />
+            <label title="Kinda bad" (click)='starClick(2)'>2 stars</label>
+
+            <input type="radio"
+                   value="1"
+                   [name]="ratingStar"
+                   [checked]="rating===1" />
+            <label title="Really bad" (click)='starClick(1)'>1 star</label>
+          </fieldset>
+        </div>
+        <button class="pressBtn" (click)="rateAsset()">{{globals.strings.RATE_ASSET_TITLE}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+

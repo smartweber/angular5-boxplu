@@ -1,0 +1,21 @@
+<h3>{{globals.strings.SUBSCRIPTION_SELECT}}</h3>
+
+<!-- Show all available subscriptions -->
+<div id="subscriptionsContentWrapper">
+  <table class="subscriptionsTbl">
+    <tr>
+      <th>{{globals?.strings.SUBSCRIPTION_PLAN_NAME || 'Description'}}</th>
+      <th>{{globals?.strings.SUBSCRIPTION_PLAN_PERIOD || 'Period'}}</th>
+      <th colspan="2">{{globals?.strings.SUBSCRIPTION_PLAN_PRICE || 'Price'}}</th>
+    </tr>
+    <tr *ngFor="let subscription of globals?.subscriptions.data">
+      <!-- Plan name -->
+      <td width="80%">{{subscription.plan_name}}</td>
+      <!-- Plan Interval -->
+      <td>{{subscription.plan_interval}}</td>
+      <!-- Price + currency -->
+      <td align="right">{{subscription.currency}}{{subscription.price}}</td>
+      <td><button class="subscriptionChooseBtn" (click)="onChoose(subscription.plan_id)">{{globals?.strings.SUBSCRIPTION_CHOOSE_PLAN}}</button></td>
+    </tr>
+  </table>
+</div>

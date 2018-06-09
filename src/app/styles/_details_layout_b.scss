@@ -1,0 +1,213 @@
+//Based on Boxplus details page
+.details-container.details-b {
+
+  .details-image {
+    position: relative;
+    width: 90%;
+    margin: 20px 5% 0 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-width: 100%;
+    }
+
+    @include tablet {
+      position: relative;
+      width: 50%;
+
+      progress {
+        bottom: 3px;
+      }
+    }
+  }
+
+
+  .play-episode {
+    width: 58px;
+    height: 58px;
+    opacity: 0.9;
+    background-color: #ec4486;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 14;
+
+    @include centerer;
+
+    img {
+      width: 18px !important;
+    }
+  }
+
+  .add-favourite {
+    border: none;
+    width: 250px;
+    height: 40px;
+    background-color: #ffffff;
+    font-size: 14px;
+    color: #ec4486;
+    display: block;
+    margin: 20px auto;
+    cursor: pointer;
+    position: relative;
+    font-family: OpenSans-Semibold;
+
+    @include tablet {
+      margin: 0px;
+    }
+
+    ::before {
+      background-image: url("assets/unfavourite.png");
+      background-size: 14px 12px;
+      width: 14px;
+      height: 12px;
+      content: '';
+      left: 45px;
+      @include vertical-align;
+    }
+  }
+
+  .add-favourite:hover {
+    @include desktop {
+      background-color: #ec4486;
+      color: #ffffff;
+
+      ::before {
+        background-image: url("assets/favourite.png");
+      }
+    }
+
+  }
+
+  .add-favourite.selected {
+    background-color: #ec4486;
+    color: #ffffff;
+
+    ::before {
+      left: 30px;
+      background-image: url("assets/favourite.png");
+    }
+
+  }
+
+  .play-button {
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+
+    button {
+      width: 100%;
+      max-width: 480px;
+      font-size: 25px;
+      font-weight: bold;
+    }
+  }
+
+
+  /******************* REDESIGN HERE *******************/
+  .movie-details {
+    display: block;
+    position: relative;
+
+    .movie-poster {
+      display: block;
+      width: 161px;
+      height: 231px;
+      margin-top: -60px;
+      margin-left: 24px;
+      margin-right: 10px;
+      z-index: 9999;
+
+      img {
+        max-width: 161px;
+        max-height: 231px;
+        border: 1px solid rgba(255,255,255, 0.3);
+      }
+    }
+
+    .movie-info {
+      vertical-align: top;
+      font-size: 11px;
+
+      .fa.fa-star, .fa.fa-star-o {
+        font-size: 16px;
+        color: yellow;
+        margin-right: 2px;
+      }
+
+      .cast {
+        display: block;
+        text-align: left;
+
+        label {
+          font-weight: bold;
+          display: inline-block;
+          font-size: 12px;
+        }
+
+        ul {
+          margin: 0;
+          padding: 0;
+          display: inline-block;
+        }
+
+        li {
+          display: inline-block;
+
+          &::after {
+            content: ',\00a0';
+          }
+
+          &:last-of-type::after {
+            content: '';
+          }
+        }
+      }
+
+
+      .directors, .actors {
+        font-weight: bold;
+      }
+
+    }
+
+    .details-info {
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
+
+  .movie-all-buttons {
+    position: relative;
+    float: right;
+    z-index: 9999;
+    margin-top: -42px;
+
+    .icon_buttons_col, .full_icon_buttons_col {
+      text-align: right;
+    }
+
+    .full_icon_buttons_col {
+      padding-top: 10px;
+    }
+
+
+  }
+
+  .relatedWrapper, .seasonsWrapper {
+    margin-top: 25px;
+    margin-left: 24px;
+  }
+
+  .seasonsTitle {
+    font-size: 18px;
+    line-height: 1.22;
+  }
+
+
+
+}

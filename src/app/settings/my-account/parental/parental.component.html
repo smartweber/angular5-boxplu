@@ -1,0 +1,90 @@
+<div id="parentalControlsWrapper">
+  <h4><div class="breadCrumb" (click)="crumbClick(globals.pageTitleSlug)">{{globals.strings.SCREEN_SETTINGS}}</div> <i class="fa fa-arrow-right" aria-hidden="true"></i> <div class="breadCrumb" (click)="crumbClick('settings/my-account')">{{globals?.strings.SCREEN_ACCOUNT}}</div> <i class="fa fa-arrow-right" aria-hidden="true"></i> {{globals.strings.SCREEN_PARENTAL_CONTROLS}}</h4>
+  <div id="parentalControlContent">
+    <table id="pinBtnsTbl">
+      <tr>
+        <td><button (click)="changePin()">{{globals.strings.SCREEN_CHANGE_PIN}}</button></td>
+        <td><button (click)="recoverPin()">{{globals.strings.SCREEN_RECOVER_PIN}}</button></td>
+        <td *ngIf="hasChanged"><button (click)="askForPin()">{{globals.strings.GENERAL_SAVE}}</button></td>
+      </tr>
+    </table>
+
+    <table id="ratingsTbl">
+      <!-- first row immutable -->
+      <tr>
+        <td id="id8-parentalCtrlSwitch">{{globals.strings.SCREEN_PARENTAL_CONTROLS}}</td>
+        <td>
+          <label class="switch">
+            <input *ngIf="parentalCtrlOn" type="radio" aria-labelledby="id8-parentalCtrlSwitch" aria-describedby="id8" (click)="toggleParentalCtrl();" checked="checked">
+            <input *ngIf="!parentalCtrlOn" type="radio" aria-labelledby="id8-parentalCtrlSwitch" aria-describedby="id8" (click)="toggleParentalCtrl();">
+            <span class="slider round"></span>
+          </label>
+        </td>
+      </tr>
+
+      <tr *ngFor="let rating of ratings?.data">
+        <td id="id9-ratingDescrption">{{rating.name}} - {{rating.description}}</td>
+        <td>
+          <label class="radio-container">
+            <input type="radio" name="radio" aria-labelledby="id9-ratingDescrption" aria-describedby="id9" (click)="changeRating(rating.id)" [disabled]="!parentalCtrlOn" [checked]="parentalCtrlOn && rating.id===lastRule">
+            <span class="checkmark"></span>
+          </label>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- Ask for pin modal -->
+<div *ngIf="askforPin===true" class="popup-container">
+  <div class="popup-close" (click)="askforPin=false"></div>
+  <div class="popup-content">
+    <div id="parentalPinContent">
+      <span class="close-button" (click)="askforPin=false"></span>
+      <h4>{{globals.strings.INFO_PIN_INSERTION}}</h4>
+
+      <div class="parentalPinMessages" [ngClass]="{'pinSuccess': !opError, 'pinError': opError}" *ngIf="messages.length > 0">
+        <span>{{messages}}</span>
+      </div>
+
+      <form id="parentalPinFrm">
+        <div class="pinPassword">
+          <span class="fa" [ngClass]="{'fa-eye-slash': showPassword, 'fa-eye': !showPassword}" (click)="toggleEye()"></span>
+          <input type="{{showPassword ? 'text' : 'password'}}" name="parental-pin" id="parental-pin" [(ngModel)]="parentalPin" required>
+        </div>
+
+        <button (click)="verifyPin()">{{globals.strings.BUTTON_CONFIRM}}</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- change pin modal -->
+<div *ngIf="showChangeModal===true" class="popup-container">
+  <div class="popup-close" (click)="showChangeModal=false"></div>
+  <div class="popup-content">
+    <div id="changeParentalPinContent">
+      <span class="close-button" (click)="showChangeModal=false"></span>
+      <h4>{{globals.strings.CHANGE_PIN_ENTER_PIN}}</h4>
+
+      <div class="parentalPinMessages" [ngClass]="{'pinSuccess': !updateOpError, 'pinError': updateOpError}" *ngIf="updateMessages.length > 0">
+        <span>{{updateMessages}}</span>
+      </div>
+
+      <form id="changeParentalPinFrm">
+        <div class="pinPassword">
+          <span class="fa" [ngClass]="{'fa-eye-slash': showPasswordOld, 'fa-eye': !showPasswordOld}" (click)="toggleEyeOld()"></span>
+          <input type="{{showPassword ? 'text' : 'password'}}" name="old-pin" id="old-pin" [(ngModel)]="oldPin" placeholder="{{globals.strings.CHANGE_PIN_SCREEN_OLD_PIN}}" required>
+        </div>
+
+        <div class="pinPassword">
+          <span class="fa" [ngClass]="{'fa-eye-slash': showPasswordNew, 'fa-eye': !showPasswordNew}" (click)="toggleEyeNew()"></span>
+          <input type="{{showPassword ? 'text' : 'password'}}" name="new-pin" id="new-pin" [(ngModel)]="newPin" placeholder="{{globals.strings.CHANGE_PIN_SCREEN_NEW_PIN}}" required>
+        </div>
+
+        <button (click)="verifyChangePin()">{{globals.strings.BUTTON_CHANGE_PIN}}</button>
+      </form>
+    </div>
+  </div>
+</div>
+

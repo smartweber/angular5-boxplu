@@ -1,0 +1,9 @@
+<div appSlickItem
+       class="carousel-container"
+       [ngClass]="{'carousel-seasons': isSeasons}"
+       dir="{{data?.layout.presentation_order == 'RTL' ? 'RTL' : 'LTR'}}"
+       *ngFor="let el of data?.playlist.contents">
+    <div id={{el.id}} class="expandVisibleRange" (click)="onslickSlideClick(el.id)">
+      <app-playlist-element [data]="el" [layout]="data?.layout" [showExtraInfo]="false"></app-playlist-element>  <!-- [ngStyle]="{'height': '0px', 'top': '-20px'}"  (click)="onslickSlideClick(el.callback,$event) -->
+    </div>
+  </div>

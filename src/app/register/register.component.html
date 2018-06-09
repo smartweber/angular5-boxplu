@@ -1,0 +1,58 @@
+<div *ngIf="isVisible" class="popup-container">
+  <div class="popup-close" (click)="isVisible=false"></div>
+  <div class="popup-content">
+    <span class="close-button" (click)="isVisible=false"></span>
+    <div id="registerContent">
+      <p id="title">{{globals.strings.REGISTER_SCREEN_TITLE_WEBSITE}}</p>
+      <form id="registerFrm" #registerFrm="ngForm">
+        <div class="inputRow">
+          <label id="id10-RegisterEmail"for="register_email">{{globals.strings.EMAIL_PLACEHOLDER}}</label>
+          <input type="email" id="register_email" name="email" aria-labelledby="id10-RegisterEmail" aria-describedby="id10" aria-required="true" [(ngModel)]="userEmail" required>
+        </div>
+        <div class="inputRow" id="registerPassword">
+          <label id="id11-showPassword" for="register_password">{{globals.strings.LOGIN_SCREEN_PASSWORD}}</label>
+          <span class="fa" [ngClass]="{'fa-eye-slash': showPassword, 'fa-eye': !showPassword}" (click)="toggleEye()"></span>
+          <input type="{{showPassword ? 'text' : 'password'}}" name="register_password" id="register_password" aria-labelledby="id11-showPassword" aria-describedby="id11" aria-required="true" [(ngModel)]="userPassword" required>
+        </div>
+        <div class="inputRow">
+          <label id="id12-userFirstName" for="register_name">{{globals.strings.REGISTER_SCREEN_FIRST_NAME}}</label>
+          <input type="text" name="register_name" id="register_name" aria-labelledby="id12-userFirstName" aria-describedby="id12" [(ngModel)]="userFirstName">
+        </div>
+        <div class="inputRow">
+          <label id="id13-userLastName" for="register_surname">{{globals.strings.REGISTER_SCREEN_LAST_NAME}}</label>
+          <input type="text" name="register_surname" id="register_surname" aria-labelledby="id13-userLastName" aria-describedby="id13" [(ngModel)]="userLastName">
+        </div>
+        <div class="inputRow">
+          <label id="id14-userMobile" for="register_phone">{{globals.strings.REGISTER_SCREEN_MOBILE_PHONE}}</label>
+          <input type="text" name="register_phone" id="register_phone" aria-labelledby="id14-userMobile" aria-describedby="id14" [(ngModel)]="userMobile">
+        </div>
+        <div class="inputRow">
+          <label id="id15-userAddress" for="register_address">{{globals.strings.REGISTER_SCREEN_ADDRESS}}</label>
+          <input type="text" name="register_address" id="register_address" aria-labelledby="id15-userAddress" aria-describedby="id15" [(ngModel)]="userAddress">
+        </div>
+
+        <div class="inputRow">
+          <label id="id16-userZipcode" for="register_postcode">{{globals.strings.REGISTER_SCREEN_ZIP_CODE}}</label>
+          <input type="text" name="register_postcode" id="register_postcode" aria-labelledby="id16-userZipcode" aria-describedby="id16" [(ngModel)]="userZipCode">
+        </div>
+
+        <div class="inputRow">
+          <label id="id17-agreeTAC" for="agreeTAC"><input type="checkbox" name="agreeTAC" id="agreeTAC" aria-labelledby="id17-agreeTAC" aria-describedby="id17"><span>{{globals.strings.REGISTER_SCREEN_AGREE_T_C}}</span></label>
+        </div>
+
+        <div class="inputRow">
+          <p style="text-align: center;">
+          <button id="signUpBtn" (click)="onSubmit()" [disabled]="!registerFrm.form.valid">{{globals.strings.REGISTER_SCREEN_SIGN_UP}}</button>
+          </p>
+        </div>
+
+      </form>
+
+      <p style="text-align: center;">
+        <a id="visitLoremIpsum" href="#">&#191;Visit www.LOREMIPSUM.com?</a>
+      </p>
+
+
+    </div>
+  </div>
+</div>

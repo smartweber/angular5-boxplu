@@ -1,0 +1,264 @@
+.epgOpacity {
+  opacity: 0.1 !important;
+}
+
+.current-epg {
+  display: none;
+
+  @include tablet {
+    display: inline-block;
+    width: calc(100% - 160px);
+    padding: 0 80px;
+    height: 254px;
+    overflow: hidden;
+    margin-bottom: 15px;
+    background-color: $focus-color;
+  }
+
+  @include desktop {
+    width: calc(100% - 200px);
+    padding: 0 100px;
+  }
+}
+
+.current-epg-container {
+  max-width: 1280px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.epgPlayerContainer {
+  width: 40%;
+  max-width: 480px;
+  float: right;
+  position: relative;
+  height: 100%;
+
+  video,
+  img{
+    width: 100%;
+    height: 100%;
+  }
+
+}
+
+.epg-info {
+  color: white;
+  width: 45%;
+  float: left;
+  height: 250px;
+}
+
+.epg-current-channel {
+  font-size: 12px;
+  margin-top: 20px;
+  margin-bottom: 0;
+
+  p {
+    display: inline-block;
+  }
+
+  .now-playing-time {
+    margin-left: 20px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
+
+.epg-current-show {
+  margin: 0 0 10px 0;
+  font-size: 24px;
+}
+
+.epg-description {
+  overflow: hidden;
+  display: block;
+  max-height: 105px;
+  width: 100%;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.epg-episode {
+  font-size: 12px;
+
+  p {
+    display: inline-block;
+    margin-right: 5px;
+  }
+}
+
+.on-now-tag {
+  width: 50px;
+  height: 18px;
+  display: inline-block;
+  line-height: 18px;
+  font-size: 10px;
+  text-align: center;
+  color: white;
+  background-color: #626b79;
+  position: relative;
+  bottom: 2px;
+  margin-right: 5px;
+  padding: 0 1px;
+}
+
+.guide-container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.days-container {
+  width: 100%;
+  height: 54px;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  text-align: center;
+  background-color: rgba(238, 246, 246, 0.8);
+
+
+  @include tablet {
+    top: 146px;
+  }
+}
+
+.days {
+  max-width: 768px;
+  margin: 0 auto;
+  padding: 0;
+  padding-top: 11px;
+  white-space: nowrap;
+  overflow: auto;
+  overflow-y:hidden;
+
+  li {
+    box-sizing: border-box;
+    display: inline-block;
+    color: $focus-color;
+    opacity: 0.8;
+    padding: 12px 0;
+    margin: 0 2%;
+    cursor: pointer;
+    font-size: 0.75em;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border-bottom: solid 4px transparent;
+
+    @include phablet {
+      padding: 10.5px 5px;
+      font-size: 0.95em;
+    }
+  }
+
+  li:hover,
+  li.focus {
+    border-bottom: solid 4px $focus-color;
+    color: $focus-color;
+    opacity: 1;
+  }
+}
+
+.epg-reminder {
+  cursor: pointer;
+  color: $focus-color;
+  background-color: white;
+  border: none;
+  width: 120px;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 10px;
+  font-weight: 600;
+
+  img {
+    vertical-align: middle;
+    width: 20px;
+  }
+}
+
+.epg-reminder.on {
+  background-color: $focus-color;
+  color: white;
+}
+
+#kalturaContainer {
+  width: 100%;
+  height: 100%;
+  @include tablet {
+    float: right;
+    width: calc(100% - 250px);
+  }
+
+}
+
+#kalturaPlayer {
+	height: 100%;
+	width: 100%;
+}
+
+.genre-selection-epg {
+  height: 55px;
+
+  li {
+    height: 38px;
+    border-radius: 11px;
+    background-color: #d8d8d8;
+    border: solid 1px #979797;
+    font-size: 17px;
+    text-align: center;
+    line-height: 38px;
+    color: #676767;
+    flex-basis: 100px;
+    flex-grow: 0;
+    flex-shrink: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    @include tablet {
+      flex-basis: 150px;
+    }
+  }
+}
+
+.epg-popup {
+  width: 400px;
+  height: unset;
+  border-radius: 5px;
+  background-color: #d8d8d8!important;
+  padding: 0!important;
+  color: #676767!important;
+
+  h1 {
+    font-size: 18px!important;
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  p {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .epg-popup-options {
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-between;
+  }
+
+  button {
+    width: calc(50% - 13px);
+    height: 59px;
+    display: inline-block;
+    border-radius: 0;
+    color: black;
+    background-color: #ffffff;
+  }
+}

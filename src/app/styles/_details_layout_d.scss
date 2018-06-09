@@ -1,0 +1,404 @@
+//Based on Boxplus details page
+.details-container.details-d {
+
+  .details-image {
+    position: relative;
+    width: 90%;
+    margin: 20px 5% 0 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      max-width: 100%;
+    }
+
+    @include tablet {
+      position: relative;
+      width: 50%;
+
+      progress {
+        bottom: 3px;
+      }
+    }
+  }
+
+  .img-responsive {
+    position: relative;
+    max-width:100%;
+    min-height: 10px;
+    margin: 0 5% 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include tablet {
+      position: relative;
+
+      progress {
+        bottom: 3px;
+      }
+    }
+  }
+
+  .img-provider {
+    height: 50px;
+    padding: 10px 0 10px 0;
+  }
+
+
+  .play-episode {
+    width: 58px;
+    height: 58px;
+    opacity: 0.9;
+    background-color: #ec4486;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 14;
+
+    @include centerer;
+
+    img {
+      width: 18px !important;
+    }
+  }
+
+  .add-favourite {
+    border: none;
+    width: 250px;
+    height: 40px;
+    background-color: #ffffff;
+    font-size: 14px;
+    color: #ec4486;
+    display: block;
+    margin: 20px auto;
+    cursor: pointer;
+    position: relative;
+    font-family: OpenSans-Semibold;
+
+    @include tablet {
+      margin: 0px;
+    }
+
+    ::before {
+      background-image: url("assets/unfavourite.png");
+      background-size: 14px 12px;
+      width: 14px;
+      height: 12px;
+      content: '';
+      left: 45px;
+      @include vertical-align;
+    }
+  }
+
+  .add-favourite:hover {
+    @include desktop {
+      background-color: #ec4486;
+      color: #ffffff;
+
+      ::before {
+        background-image: url("assets/favourite.png");
+      }
+    }
+
+  }
+
+  .add-favourite.selected {
+    background-color: #ec4486;
+    color: #ffffff;
+
+    ::before {
+      left: 30px;
+      background-image: url("assets/favourite.png");
+    }
+
+  }
+
+  .play-button {
+    width: 100%;
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+
+    button {
+      width: 100%;
+      max-width: 480px;
+      font-size: 25px;
+      font-weight: bold;
+    }
+  }
+
+
+  /******************* REDESIGN HERE *******************/
+.movie-details-d {
+  margin: 25px 0px 25px 25px;
+  max-width: 700px;
+
+  .movie-info {
+    vertical-align: top;
+    font-size: 11px;
+
+    td {
+      padding: 5px;
+    }
+
+    .fa.fa-star, .fa.fa-star-o {
+      font-size: 16px;
+      color: white;
+      margin-right: 2px;
+    }
+
+    .cast {
+      display: block;
+      text-align: left;
+
+      ul {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+      }
+
+      li {
+        display: inline-block;
+      }
+
+      .listactors{
+        &::after {
+          content: 'll,\00a0';
+        }
+        &:last-of-type::after {
+          content: '';
+        }
+      }
+    }
+
+    .directors, .actors {
+      font-weight: bold;
+      font-size: 12px;
+    }
+  }
+
+}
+
+
+
+  .movie-details {
+    display: block;
+    position: relative;
+
+    .movie-poster {
+      display: block;
+      width: 161px;
+      height: 231px;
+      margin-top: -60px;
+      margin-left: 24px;
+      margin-right: 10px;
+      z-index: 9999;
+
+      img {
+        max-width: 161px;
+        max-height: 231px;
+        border: 1px solid rgba(255,255,255, 0.3);
+      }
+    }
+
+    .movie-info {
+      vertical-align: top;
+      font-size: 11px;
+
+      .fa.fa-star, .fa.fa-star-o {
+        font-size: 16px;
+        color: yellow;
+        margin-right: 2px;
+      }
+
+      .cast {
+        display: block;
+        text-align: left;
+
+        label {
+          font-weight: bold;
+          display: inline-block;
+          font-size: 12px;
+        }
+
+        ul {
+          margin: 0;
+          padding: 0;
+          display: inline-block;
+        }
+
+        li {
+          display: inline-block;
+
+          &::after {
+            content: ',\00a0';
+          }
+
+          &:last-of-type::after {
+            content: '';
+          }
+        }
+      }
+
+
+      .directors, .actors {
+        font-weight: bold;
+      }
+
+    }
+
+    .details-info {
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
+
+  .movie-all-buttons {
+    position: relative;
+    z-index: 10;
+
+    .icon_buttons_col, .full_icon_buttons_col {
+      /*text-align: right;*/
+    }
+
+    .full_icon_buttons_col {
+      padding-top: 10px;
+    }
+
+
+  }
+
+  .relatedWrapper, .seasonsWrapper {
+    /*
+    margin-top: 25px;
+    margin-left: 24px;
+    */
+  }
+
+  .seasonsTitle {
+    font-size: 16px;
+    line-height: 1.22;
+  }
+
+  .seasonHeaderTbl{
+    width: 100%;
+    text-align: center;
+    font-size: 1.2em;
+    margin-bottom: 1em;
+  }
+
+  .seasonsEpisodesTbl{
+    width: 80%;
+    position: relative;
+    left: 10%;
+    tr {
+      border-bottom: 1px solid #9c9c9c;
+    }
+
+    tr:last-child {
+      border-bottom: 4em;
+    }
+
+    img {
+      width: 100px;
+    }
+  }
+
+  .episodeImage {
+    position: relative;
+    vertical-align: middle;
+    width: 100px;
+    height: 50px;
+  }
+
+  .playArrow {
+    position: absolute;
+    top: calc(50% - 20px); /* -53px; */
+    left: calc(50% - 20px); /* 27px; */
+    //transform: translate(-40%, -60%);
+    background: $TVCplay-Bgcolor;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    opacity: 0.7;
+    z-index: 111;
+    border: 1px solid transparent;
+    &:before {
+      position: relative;
+      top: -9px;
+      left: 15px;
+      font-family: FontAwesome;
+      font-style: normal;
+      font-size: 41px;
+      color: $TVCplay-arrow;
+      content: '\f0da';
+    }
+  }
+
+  .playArrow:hover {
+    border:1px solid white;
+    cursor: pointer;
+  }
+
+  .seasonsEpisodesCol {
+    padding: 35px;
+  }
+
+  .episode-share-icon {
+    vertical-align: middle;
+    font-size: 2em;
+  }
+
+  .seasonNumberTbl {
+    width:100%;
+    table-layout: fixed;
+    vertical-align: middle;
+    text-align: center;
+    td {
+      width:20%;
+      font-size: 2em;
+    }
+    td:last-child {
+      width:80%;
+      font-size: 1em;
+    }
+  }
+
+  .noEpisodes {
+    text-align: center;
+    padding: 20px 0 20px 0;
+    font-size: 18px;
+  }
+
+  .detailsRelatedCarousel {
+    /* for alignment with upper content */
+    left: -7px;
+  }
+
+}
+
+.pressBtn {
+  color: #ffffff;
+  background-color: $TVCbutton-color;
+  border-radius: 5px;
+  font-size: 14px;
+  min-width: 311px;
+  margin: 20px auto;
+  &:hover {
+    background-color: $TVCprimary-color;
+  }
+}
+
+.rateBtn {
+  color: #ffffff;
+  background-color: $TVCbutton-color;
+  border-radius: 5px;
+  font-size: 14px;
+  margin-left: 10px;
+  &:hover {
+    background-color: $TVCprimary-color;
+  }
+}

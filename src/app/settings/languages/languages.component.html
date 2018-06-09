@@ -1,0 +1,15 @@
+<div id="changeLanguageWrapper">
+  <h4><div class="breadCrumb" (click)="crumbClick(globals.pageTitleSlug)">{{globals.strings.SCREEN_SETTINGS}}</div> <i class="fa fa-arrow-right" aria-hidden="true"></i> {{globals.strings.SETTINGS_SCREEN_CHANGE_LANGUAGE}}</h4>
+  <div class="sett-languages-wrapper">
+    <table class="langListTbl">
+      <tr  class="langListTblRow" *ngFor="let lang of globals.languages">
+        <td class="langListTblCol">{{lang.name}}</td>
+        <td class="langListTblCol check">
+          <i *ngIf="isSelected(lang.code)" (click)="chooseLang(lang.code)" class="fa fa-check-circle-o"></i>
+          <i *ngIf="!isSelected(lang.code)" (click)="chooseLang(lang.code)" class="fa fa-circle-o"></i>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+

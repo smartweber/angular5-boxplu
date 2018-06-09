@@ -1,0 +1,40 @@
+#sessionsWrapper {
+  position: fixed;
+}
+
+app-sessions {
+  width: 100%;
+  background: $bg-color;
+}
+
+.sessions-list-tbl {
+  width: 50%;
+  margin: 0 auto;
+  border-collapse: collapse;
+
+  .sessions-list-tbl-title {
+    font-size: 18px;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .sessions-list-tbl-row {
+    border-bottom: 1px solid #fff;
+    td:not(:last-child) {
+      padding: 10px 20px 10px 20px;
+    }
+  }
+
+  .sessions-list-tbl-session-name {
+    font-size: 18px;
+  }
+
+  i.fa.fa-times-circle {
+    font-size: 48px;
+    cursor: pointer;
+
+    &:hover {
+      color: $focus-color;
+    }
+  }
+}

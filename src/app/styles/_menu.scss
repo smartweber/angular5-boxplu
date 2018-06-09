@@ -1,0 +1,938 @@
+#responsive-header {
+  width: 100vw;
+  height: 55px;
+  background-color: $header-color;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 15;
+  text-align: center;
+  transition: opacity 0.3s ease;
+
+  &.open {
+    opacity: 0.65;
+  }
+
+  @include tablet {
+    display: none;
+  }
+
+  p {
+    width: 50%;
+    font-size: 20px;
+    margin: 0 auto;
+    line-height: 55px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+/* Full width top "strip" */
+#header {
+  width: 100%;
+  position: fixed;
+  min-height: 0;
+  z-index: 15;
+
+  background-color: $header-color;
+
+  @include tablet {
+    min-height: 159px;
+    z-index: 9998;
+  }
+}
+
+#menu-container {
+  max-width: 1320px;
+  height: 100%;
+  min-height: 100%;
+
+  @include tablet {
+    margin: 0 auto;
+    height: 159px;
+    min-height: 0;
+  }
+
+}
+
+
+#menu {
+  min-height: 100%;
+  height: 100%;
+  display: inline-block;
+  position: fixed;
+  z-index: 9999;
+  background-color: $header-color;
+  left: -200px;
+  top: 0;
+  width: 200px;
+  font-size: 18px;
+  transition: transform 0.5s ease;
+
+  @include tablet {
+    height: 159px;
+    width: 100%;
+    min-height: 0;
+    left: 0;
+    transform: translate(0px, 0px);
+    transition: translate 0s ease;
+    position: relative;
+  }
+
+  nav {
+    @include tablet {
+      display: inline-block;
+      height: 20px;
+      position: absolute;
+      left: 0;
+      bottom: 23px;
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  ul {
+    @include tablet {
+      margin: 0;
+      list-style-type: none;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 0;
+      height:60px;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    &::-webkit-scrollbar {
+      width: 15px;
+      max-height: 15px;
+      background-color: #232323;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 16px;
+      background-color: #383838;
+      border: 4px rgba(35, 35, 35, 1) solid;
+    }
+    scrollbar-face-color: #383838;
+    scrollbar-track-color: #232323;
+    scrollbar-highlight-color: #383838;
+    scrollbar-arrow-color: #383838;
+    scrollbar-shadow-color: #383838;
+  }
+}
+
+.logo-big {
+  display: none;
+  opacity: 1 ;
+
+  @include tablet {
+    width: 100px;
+    opacity: 1;
+    margin-top: 25px;
+    display: inline-block;
+  }
+
+  img {
+    width: 100px;
+  }
+}
+
+.logo-small {
+  width: 100px;
+  left: 40px;
+  bottom: 10px;
+  display: inline-block;
+  margin: 0;
+  position: absolute;
+  opacity: 1;
+
+  @include tablet {
+    display: none;
+  }
+
+  img {
+    width: 100px;
+  }
+}
+
+.social-login {
+  position: absolute;
+  bottom: 90px;
+  margin-left: 35px;
+
+  @include tablet {
+    position: relative;
+    float: right;
+    top: 70px;
+  }
+
+  img {
+    margin-right: 17px;
+  }
+}
+
+.user-area {
+  position: absolute;
+  bottom: 130px;
+  //width: 120px;
+  max-width: 150px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+
+  #user-avatar {
+    width: 35px;
+    display: block;
+    margin: 0 auto;
+
+    img {
+      width: 35px;
+      height: 35px;
+      vertical-align: middle;
+    }
+  }
+
+  #userDetails {
+    display: inline-grid;
+    vertical-align: middle;
+    text-align: center;
+    /* Make it appear as link as it performs an action */
+    cursor: pointer;
+
+    @include tablet {
+      text-align: left;
+    }
+
+    #userName {
+      font-family: OpenSans-Semibold;
+      font-size: 18px;
+    }
+
+    #userEmail {
+      font-size: 12px;
+      margin-right: 5px;
+    }
+
+    #profilesCaret {
+      vertical-align: middle;
+      font-size: 28px;
+    }
+  }
+
+
+
+  #loginBtn {
+    margin-right: 18px;
+  }
+
+  #loginBtn, #registerBtn {
+    font-size: 14px;
+    text-decoration: none;
+    color: $text-color;
+
+    &:hover {
+      opacity: 1;
+      color: $link-hover-color;
+    }
+  }
+
+  @include tablet {
+    position: relative;
+    float: right;
+    top: 23px;
+    min-width: 239px;
+    max-width: 0;
+
+    #user-avatar {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    #loginBtn, #registerBtn {
+      display: inline-block;
+      font-size: 16px;
+    }
+
+    .searchTools {
+      display: block;
+      margin-top: 12px;
+      position: relative;
+
+      input {
+        width: 236px;
+        height: 28px;
+        text-indent: 5px;
+        background-color: $TVCinput-bg-color;
+        border: solid 1px #979797;
+      }
+
+      .fa-search {
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        color: $text-color;
+
+        &:hover {
+          color: $highlight-text-color;
+        }
+      }
+    }
+  }
+}
+
+#menu.open {
+  transform: translate(200px, 0px);
+
+  @include tablet {
+    transform: translate(0px, 0px);
+    position: relative;
+  }
+}
+
+
+#hamburger-icon {
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  margin-left: 10px;
+  display: inherit;
+
+  #user-avatar {
+    width: 35px;
+    margin-right: 10px;
+
+    img {
+      width: 35px;
+      height: 35px;
+      vertical-align: middle;
+    }
+  }
+
+  @include tablet {
+    display: none;
+  }
+}
+
+/*
+#cover-content {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transition: opacity 0.3s ease;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 1;
+
+  @include tablet {
+    display: none;
+  }
+}
+*/
+
+#nav-icon3 {
+  width: 60px;
+  height: 45px;
+  position: relative;
+  margin-left: 20px;
+  transform: rotate(0deg);
+  transition: 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+#nav-icon3 span {
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 30px;
+  background: $menu-icon-color;
+  opacity: 1;
+  left: 10px;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+
+#nav-icon3 span:nth-child(1) {
+  top: 8px;
+}
+
+#nav-icon3 span:nth-child(2), #nav-icon3 span:nth-child(3) {
+  top: 16px;
+}
+
+#nav-icon3 span:nth-child(4) {
+  top: 24px;
+}
+
+.open #nav-icon3 span:nth-child(1) {
+  top: 23px;
+  width: 0;
+  left: 50%;
+}
+
+.open #nav-icon3 span:nth-child(2) {
+  transform: rotate(45deg);
+}
+
+.open #nav-icon3 span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+.open #nav-icon3 span:nth-child(4) {
+  top: 26px;
+  width: 0;
+  left: 50%;
+}
+
+menu {
+  padding: 0;
+}
+
+.lowResMenu {
+  position: absolute;
+  width: 100%;
+  left: 100%;
+  top: 110px;
+  line-height: 1.5em;
+  background-color: rgba(0, 24, 50, 0.95);
+  transform: translate(0px, 0px);
+  transition: 0.5s ease-in-out;
+  font-size: 16px;
+
+  .lowResMenAvaTbl {
+    color: white;
+    line-height: 1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: table-cell;
+    border-top: 10px solid rgba(0, 24, 50, 0.95);
+    td {
+      padding-left: 20px;
+    }
+
+    #userEmail {
+      font-size: 12px;
+    }
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+  }
+
+
+  li {
+    padding: 10px;
+    display: block;
+    text-align: left;
+    color: #7f8181;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    &:hover .routeItm {
+      /* opacity: 1;
+      color: $link-hover-color; */
+      font-weight: bold;
+    }
+
+    &.selected .routeItm {
+      /* opacity: 1;
+      position: relative; */
+      font-weight: bold;
+      color: white;
+    }
+
+    .routeItm {
+      white-space: nowrap;
+      /* opacity: 0.5; */
+      text-decoration: none;
+    }
+/*
+    a {
+      display: block;
+      white-space: nowrap;
+      text-decoration: none;
+      &.selected {
+        font-weight: bold;
+        opacity: 1;
+        color: white;
+      }
+      &:hover a {
+        font-weight: bold;
+      }
+    }
+    */
+    &:hover {
+      background-color: #1f388b;
+    }
+
+    img {
+      width: 29px;
+      height: 29px;
+      vertical-align: middle;
+      margin-left: 0px;
+    }
+  }
+
+  .searchTools {
+    display: block;
+    margin: 12px 10px 5px 10px;
+    position: relative;
+
+    input {
+      width: 100%;
+      height: 28px;
+      text-indent: 5px;
+      background-color: $TVCinput-bg-color;
+      border: 0px;
+    }
+
+    .fa-search {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      color: $text-color;
+
+      &:hover {
+        color: $highlight-text-color;
+      }
+    }
+  }
+
+  .social {
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  /*
+  li {
+    margin: 10px 0;
+    padding: 0;
+    display: block;
+    text-align: left;
+    font-size: 14px;
+    white-space:nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+
+    @include tablet {
+      overflow: initial;
+      text-overflow: initial;
+      margin: 0 5px;
+      display: inline-block;
+      text-align: center;
+      font-size: 18px;
+
+      img {
+        margin-right: 5px;
+      }
+    }
+
+    &:hover a {
+      opacity: 1;
+      color: $link-hover-color;
+    }
+
+    &.selected a {
+      opacity: 1;
+      position: relative;
+    }
+
+    a {
+      white-space: nowrap;
+      opacity: 0.5;
+      text-decoration: none;
+    }
+
+    img {
+      width: 29px;
+      height: 29px;
+      vertical-align: middle;
+      margin-right: 3px;
+    }
+  }
+  */
+
+  @include tablet {
+    display: none;
+  }
+}
+
+.openlowResMenu {
+  transform: translate(-100%, 0px);
+}
+
+
+
+
+.social [class*="fa fa-"] {
+  background-color: $social-icon-bg;
+  border-radius: 30px;
+  color: $text-color;
+  /*display: inline-block;*/
+  height: 30px;
+  line-height: 30px;
+  margin: auto 3px;
+  width: 30px;
+  font-size: 15px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.fa-facebook:hover {color: $link-hover-color;}
+.fa-twitter:hover {color: $link-hover-color;}
+.fa-instagram:hover {color: $link-hover-color;}
+
+
+/* HERE GOES ALL CUSTOMER SPECIFIC TOP AREA (SEE menu.component.ts) */
+#header-custom {
+  width: 100%;
+  position: fixed;
+  min-height: 0;
+  z-index: 9999;
+
+  background-color: #254D8E;
+
+  @include tablet {
+    min-height: 159px;
+    height: 159px;
+    z-index: 9998;
+  }
+
+  #menu-container-custom {
+    max-width: 1320px;
+    height: 100%;
+    min-height: 100%;
+    display: flex;
+    justify-content: flex-start;
+
+    @include tvcable-main-header-background-image;
+
+    @include tablet {
+      margin: 0 auto;
+      height: 159px;
+      min-height: 0;
+    }
+
+    #logo-area-custom {
+      position: absolute;
+      float: left;
+      width: 25%;
+      top: 30%;
+      padding: 0px 10px 10px 10px;
+      line-height: 100px;
+      display: flex;
+
+      img {
+        min-width: 115px;
+        margin-left:13px;
+        vertical-align: middle;
+      }
+
+      @include tablet {
+        img {
+          width: 290px;
+          margin-left:26px;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    #menu-custom {
+      float: right;
+      height: 110px;
+      width: 100%;
+      min-height: 0;
+      /*left: 0;
+      transform: translate(0px, 0px);
+      transition: translate 0s ease;*/
+      position: relative;
+      display: flex;
+
+      @include tablet {
+        height: 159px;
+      }
+
+
+      nav {
+        text-align: right;
+        color: #ffffff;
+        float: right;
+        margin-bottom: 20px;
+        position: absolute;
+        bottom: 0px;
+        left: 20%;
+        width: 80%;
+
+        @include tablet {
+          left: 35%;
+          width: 65%;
+        }
+
+        ul {
+          list-style-type: none;
+          justify-content: space-between;
+          height: 1em;
+          display: inline-block;
+          /* display:flex;*/
+
+          li {
+            margin: 10px 0;
+            padding: 0 10px 0 10px;
+            float: left;
+            display: block;
+            text-align: right;
+            font-size: 14px;
+            white-space:nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            /* display:flex; */
+            /* justify-content: space-evenly; */
+
+            &:last-child {
+              padding-right: 0px;
+            }
+
+            @include tablet {
+              overflow: initial;
+              text-overflow: initial;
+              /*margin: 0 0 0 30px;*/
+              padding: 0 15px 0 15px;
+              display: inline-block;
+              text-align: center;
+              font-size: 16px;
+
+              img {
+                margin-right: 5px;
+              }
+
+            }
+
+            &:hover .routeItm {
+              /* opacity: 1;
+              color: $link-hover-color; */
+              font-weight: bold;
+            }
+
+            &.selected .routeItm {
+              /* opacity: 1;
+              position: relative; */
+              font-weight: bold;
+              color: white;
+            }
+
+            .routeItm {
+              white-space: nowrap;
+              /* opacity: 0.5; */
+              text-decoration: none;
+            }
+
+            img {
+              width: 29px;
+              height: 29px;
+              vertical-align: middle;
+              margin-right: 3px;
+            }
+          }
+        }
+      }
+
+      .menuTbl {
+        width:100%;
+        table-layout: fixed;
+        vertical-align: middle;
+        text-align: center;
+        td {
+          width:20%;
+          font-size: 2em;
+        }
+        td:last-child {
+          width:80%;
+          font-size: 1em;
+        }
+
+        .highlight{
+          border: none;
+          font-weight: bold;
+        }
+      }
+
+
+      .user-area-custom {
+        position: absolute !important;
+        bottom: 130px;
+        max-width: 370px;
+        right: 130px;
+
+        .TopRightLoginTbl {
+          position: absolute;
+          top: 32px;
+          right: -85px;
+          width: 370px;
+          tr {
+            height: 1em;
+          }
+          td {
+            width: 130px;
+            display: table-cell;
+            vertical-align: sub;
+          }
+          td:last-child {
+            /* width:240px; */
+            max-width: 240px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: table-cell;
+          }
+
+          @include tablet {
+            top: 10px;
+            right: -130px;
+            width: 370px;
+            tr {
+              height: 1em;
+            }
+            td {
+              width: 130px;
+              display: table-cell;
+              vertical-align: sub;
+            }
+            td:last-child {
+              /* width:240px; */
+              max-width: 240px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              display: table-cell;
+            }
+          }
+        }
+
+
+        #user-avatar {
+          width: 35px;
+          margin-right: 10px;
+
+          img {
+            width: 35px;
+            height: 35px;
+            vertical-align: middle;
+          }
+        }
+
+        #userDetails {
+          display: inline-grid;
+          vertical-align: middle;
+          text-align: center;
+          /* Make it appear as link as it performs an action */
+          cursor: pointer;
+
+          @include tablet {
+            text-align: left;
+          }
+
+          #userName {
+            font-family: OpenSans-Semibold;
+            font-size: 18px;
+          }
+
+          #userEmail {
+            font-size: 12px;
+            margin-right: 5px;
+          }
+
+          #profilesCaret {
+            vertical-align: middle;
+            font-size: 28px;
+          }
+        }
+
+
+
+        #loginBtn {
+          margin-right: 18px;
+        }
+
+        #loginBtn, #registerBtn {
+          font-size: 14px;
+          text-decoration: none;
+          color: $text-color;
+
+          &:hover {
+            opacity: 1;
+            color: $link-hover-color;
+          }
+        }
+
+        .searchTools {
+          display: none;
+        }
+
+        @include tablet {
+          position: relative;
+          float: right;
+          top: 23px;
+          min-width: 239px;
+          max-width: 0;
+
+          #user-avatar {
+            display: inline-block;
+            margin-right: 10px;
+          }
+
+          #loginBtn, #registerBtn {
+            display: inline-block;
+            font-size: 16px;
+          }
+
+          .searchTools {
+            display: block;
+            margin-top: 12px;
+            position: relative;
+
+            input {
+              width: 236px;
+              height: 28px;
+              text-indent: 5px;
+              background-color: $TVCinput-bg-color;
+              border: 0px;
+            }
+
+            .fa-search {
+              position: absolute;
+              top: 7px;
+              right: 10px;
+              color: $text-color;
+
+              &:hover {
+                color: $highlight-text-color;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .menuTbl {
+    width:100%;
+    table-layout: fixed;
+    vertical-align: middle;
+    font-size: 1em;
+    text-align: center;
+    td {
+      width:30%;
+    }
+    td:last-child {
+      width:70%;
+    }
+  }
+
+}

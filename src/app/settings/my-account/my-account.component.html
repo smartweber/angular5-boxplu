@@ -1,0 +1,62 @@
+<div id="myAccountWrapper">
+  <h4><div class="breadCrumb" (click)="crumbClick(globals.pageTitleSlug)">{{globals.strings.SCREEN_SETTINGS}}</div> <i class="fa fa-arrow-right" aria-hidden="true"></i> {{globals?.strings.SCREEN_ACCOUNT}}</h4>
+  <div class="my-account-wrapper">
+
+    <div class="my-account-user-wrapper">
+
+      <table>
+        <tr>
+          <td class="avatar"><i class="fa fa-user-circle"></i></td>
+          <td>
+            <table class="user-info">
+              <tr>
+                <td class="label">{{globals.strings.LOGIN_SCREEN_USERNAME}}</td>
+                <td class="info">{{globals.currProfile?.name}}</td>
+              </tr>
+              <tr>
+                <td class="label">{{globals.strings.MY_ACCOUNT_EMAIL}}</td>
+                <td class="info">{{globals.currProfile?.email}}</td>
+              </tr>
+              <tr>
+                <td class="label">{{globals.strings.MY_ACCOUNT_SIGNUP_DATE}}</td>
+                <td class="info">{{globals.currProfile?.sign_up_date.substring(0, 10)}}</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+    <div class="clearfix"></div>
+
+    <div class="my-account-menu-wrapper">
+      <div class="my-account-menuOption" *ngFor="let menuOption of menuOptions">
+        <table class="my-account-menuOptionsTbl">
+          <tr>
+            <!-- Routes under My account -->
+            <a *ngIf="menuOption.type == 'router'" routerLink="/settings/my-account/{{menuOption.action}}">
+              <td class="my-account-btn-txt">{{menuOption.btn_text}}</td>
+            </a>
+
+            <!-- Direct routes -->
+            <a *ngIf="menuOption.type == 'router-direct'" routerLink="/{{menuOption.action}}">
+              <td class="my-account-btn-txt">{{menuOption.btn_text}}</td>
+            </a>
+
+            <!-- Call back functions -->
+            <a *ngIf="menuOption.type =='callback'" (click)="this.menuOption.action(true)">
+              <td class="my-account-btn-txt">{{menuOption.btn_text}}</td>
+            </a>
+          </tr>
+        </table>
+      </div>
+    </div>
+</div>
+
+
+
+
+</div>
+
+<app-change-password></app-change-password>
+

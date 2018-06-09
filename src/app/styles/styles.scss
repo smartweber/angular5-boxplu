@@ -1,0 +1,52 @@
+//styles.sass
+@import "normalize";
+@import "../node_modules/video.js/dist/video-js.min.css";
+@import "../node_modules/slick-carousel/slick/slick.css";
+@import "../node_modules/slick-carousel/slick/slick-theme.css";
+@import "../node_modules/font-awesome/css/font-awesome.min.css";
+@import '../node_modules/simplebar/dist/simplebar.css';
+
+/* Customer specfic styles go here */
+@import "tvcable";
+
+/* Font awesome */
+@import "variables";
+@import "mixins";
+@import "base";
+@import "loading";
+@import "menu";
+@import "block";
+@import "carousel";
+@import "listing";
+@import "static";
+
+/* DETAILS Styles */
+@import "details_common";
+@import "details_layout_a";
+@import "details_layout_b";
+@import "details_layout_d";
+
+@import "player";
+@import "playlist-element";
+@import "epg";
+@import "epgbig";
+@import "epgsmall";
+@import "header";
+@import "footer";
+@import "popups";
+@import "profile-drawer";
+@import "switches"; // much better looking than plain checkboxes :P
+@import "sessions";
+@import "subscriptions";
+@import "payments";
+@import "settings";
+@import "settings-languages";
+@import "my-account";
+@import "settings-edit-profile";
+@import "pairing";
+@import "pricing";
+@import "terms-help-faq";
+@import "change_password";
+@import "parental";
+
+

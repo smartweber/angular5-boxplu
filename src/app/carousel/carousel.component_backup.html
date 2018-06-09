@@ -1,0 +1,33 @@
+<div
+  *ngIf="RuidataLoaded"
+  [style.opacity]="showCarousel ? 1 : 0"
+  class="carousel-container"
+  [ngClass]="{'carousel-seasons': isSeasons}"
+  dir="{{data.layout.presentation_order == 'RTL' ? 'RTL' : 'LTR'}}"
+  id="carousel-{{data.playlist.id}}-{{data.playlist.slug}}-{{data.layout.id}}">
+  <app-playlist-element *ngFor="let el of data.playlist.contents; trackBy: trackByContent"
+                        [data]="el"
+                        [layout]="data.layout"
+                        [showExtraInfo]="isSeasons">
+  </app-playlist-element>
+</div>
+<div *ngFor="let eppi of data.playlist.contents">{{eppi.name}}<br></div>
+<br>oi {{RuiTeste}}
+<br>showCarousel: {{showCarousel}}
+{{data.playlist.contents | json}}
+
+
+<!--
+<div
+  [style.opacity]="showCarousel ? 1 : 0"
+  class="carousel-container"
+  [ngClass]="{'carousel-seasons': isSeasons}"
+  dir="{{data.layout.presentation_order == 'RTL' ? 'RTL' : 'LTR'}}"
+  id="carousel-{{data.playlist.id}}-{{data.playlist.slug}}-{{data.layout.id}}">
+  <app-playlist-element *ngFor="let el of data.playlist.contents; trackBy: trackByContent"
+                        [data]="el"
+                        [layout]="data.layout"
+                        [showExtraInfo]="isSeasons">
+  </app-playlist-element>
+</div>
+-->

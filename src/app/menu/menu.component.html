@@ -1,0 +1,187 @@
+<!-- MOBILE DESIGN -->
+<div id="responsive-header" [class.open]="menuOpen">
+  <p>{{globals.pageTitle}}</p>
+</div>
+<!-- DESKTOP VERSION TEMPLATE -->
+<div *ngIf="!menuCustom" id="header">
+  <div id="menu-container">
+
+    <div id="menu" [class.open]="menuOpen">
+
+      <a routerLink="" class="logo-big"><img src="{{globals.settings.logo_image.url}}"></a>
+
+      <div id="hamburger-icon" (click)="toggleMenu()">
+        <div id="nav-icon3">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li *ngFor="let el of data" [class.selected]="isFocused(el.name)">
+            <a routerLink="/{{el.slug}}" (click)="toggleMenu()"><img src="{{el.image.url}}" *ngIf="el.image.url">{{el.name}}</a>
+          </li>
+        </ul>
+      </nav>
+
+      <a routerLink="" class="logo-small"><img src="assets/logo.png"></a>
+
+      <div class="user-area">
+        <a id="user-avatar"><img src="{{globals.currAvatar}}"></a>
+        <!-- Show login and register buttons if user not logged in -->
+        <a *ngIf="!globals.userLoggedIn" id="loginBtn" (click)="showLogin()">{{globals.strings.LOGIN_SCREEN_LOGIN}}</a>
+        <a *ngIf="!globals.userLoggedIn" id="registerBtn" (click)="showRegister()">{{globals.strings.SETTINGS_SCREEN_REGISTER}}</a>
+        <!-- Show user name and email if user logged in and profile info successfully retrieved -->
+        <div id="userDetails" *ngIf="globals.accountProfileToken!==null" (click)="toggleProfilesDrawer()">
+          <span id="userName">{{globals.currProfile?.name}}</span>
+          <span id="userEmail">
+            {{globals.currProfile?.email}}<li *ngIf="globals.userProfiles?.length > 1" id="profilesCaret" class="fa fa-caret-down" aria-hidden="true" #profilesCaret></li>
+          </span>
+
+          <profile-drawer></profile-drawer>
+
+
+        </div>
+
+        <div class="searchTools">
+          <form (ngSubmit)="search()">
+            <a><span class="fa fa-search"></span></a>
+            <input type="text" [(ngModel)]="searchTerm" name="searchTerm">
+          </form>
+        </div>
+      </div>
+
+      <div class="social-login social">
+        <a id="facebookLogin" class="fa fa-facebook"></a>
+        <a id="twitterLogin" class="fa fa-twitter"></a>
+        <a id="instagramLogin" class="fa fa-instagram"></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="cover-content" *ngIf="menuOpen" (click)="toggleMenu()"></div>
+
+
+
+<!-- CUSTOMER SPECIFIC MENU AREA -->
+<div  *ngIf="menuCustom" id="header-custom">
+  <div id="menu-container-custom">
+    <div id="menu-custom" [class.open]="menuOpen">
+
+
+      <!-- menu left area for logo -->
+      <div id="logo-area-custom">
+        <a routerLink=""><img class="img-responsive" src="{{globals.settings.logo_image.url}}"></a>
+      </div>
+
+
+      <!-- For low resolution screens < 768px -->
+      <div id="hamburger-icon">
+        <a id="user-avatar" (click)="showLogin()"><img [src]="this.globals.currAvatar" (error)="avatarImage=globals.API.slice(0,-4)+'uploads/placeholder/placeholder.png'"></a>
+        <div id="nav-icon3"  (click)="toggleMenu()">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div [style.height]="winHeight" class="lowResMenu" [class.openlowResMenu]="menuOpen">
+          <table class="lowResMenAvaTbl">
+            <tr>
+              <td><a id="user-avatar" (click)="showLogin()"><img [src]="this.globals.currAvatar" (error)="avatarImage=globals.API.slice(0,-4)+'uploads/placeholder/placeholder.png'"></a></td>
+              <td>
+                <!-- Show user name and email if user logged in and profile info successfully retrieved -->
+                <div id="userDetails" *ngIf="globals.accountProfileToken!==null" (click)="toggleProfilesDrawer()">
+                  <span id="userName">{{globals.currProfile?.name}}</span><br>
+                  <span id="userEmail">
+                    {{globals.currProfile?.email}}<li *ngIf="globals.userProfiles?.length > 1 && globals.rules.multipleProfiles" id="profilesCaret" class="fa fa-caret-down" aria-hidden="true" #profilesCaret></li>
+                  </span>
+                  <profile-drawer></profile-drawer>
+                </div>
+              </td>
+            </tr>
+          </table>
+        <ng-container *ngFor="let el of data">
+          <li *ngIf="el.name!=globals.strings.CONTENT_GROUP_BTN_FAVOURITES || globals.userLoggedIn" [class.selected]="isFocused(el.name)">
+            <div class="routeItm" (click)="actionMenu(el.slug)"><img src="{{el.image.url}}" *ngIf="el.image.url">{{el.name}}</div>
+          </li>
+        </ng-container>
+        <div class="searchTools">
+            <form (ngSubmit)="search()">
+                <a><span class="fa fa-search" (click)="search()"></span></a>
+                <input type="text" [(ngModel)]="searchTerm" name="searchTerm">
+            </form>
+        </div>
+        <div class="social">
+            <a *ngIf="globals.rules.socialMediaFB" id="facebookLogin" class="fa fa-facebook"></a>&nbsp;
+            <a *ngIf="globals.rules.socialMediaTwitter" id="twitterLogin" class="fa fa-twitter"></a>&nbsp;
+            <a *ngIf="globals.rules.socialMediaInstagram" id="instagramLogin" class="fa fa-instagram"></a>
+        </div>
+      </div>
+
+      <!-- For higher resolution screens >= 768px -->
+
+      <nav *ngIf="winWidth>=768">
+        <ul>
+          <ng-container *ngFor="let el of data">
+            <li *ngIf="el.name!=globals.strings.CONTENT_GROUP_BTN_FAVOURITES || globals.userLoggedIn" [class.selected]="isFocused(el.name)">
+              <div class="routeItm" (click)="actionMenu(el.slug)"><img src="{{el.image.url}}" *ngIf="el.image.url">{{el.name}}</div>
+            </li>
+          </ng-container>
+        </ul>
+      </nav>
+
+<!--
+      <table [style.width]="'100%'" class="menuTbl">
+      <td></td>
+      <td><app-carousel *ngIf="winWidth>=768" [data]="menuList" [isSeasons]="false"></app-carousel></td> <!-- removed [typeCarousel]="seasonstypeCarousel" (parentCallback)="detailsCallback($event[0],$event[1])"
+      </table>
+-->
+
+      <div *ngIf="winWidth >= 768" class="user-area-custom">
+        <table class="TopRightLoginTbl">
+          <tr>
+            <td>
+            </td>
+            <td>
+              <a id="user-avatar"><img [src]="this.globals.currAvatar" (error)="avatarImage=globals.API.slice(0,-4)+'uploads/placeholder/placeholder.png'"></a>
+              <!-- Show login and register buttons if user not logged in -->
+              <a *ngIf="!globals.userLoggedIn" id="loginBtn" (click)="showLogin()">{{globals.strings.LOGIN_SCREEN_LOGIN}}</a>
+              <!-- Show user name and email if user logged in and profile info successfully retrieved -->
+              <div id="userDetails" *ngIf="globals.accountProfileToken!==null" (click)="toggleProfilesDrawer()">
+                <span id="userName">{{globals.currProfile?.name}}</span>
+                <span id="userEmail">
+                  {{globals.currProfile?.email}}<li *ngIf="globals.userProfiles?.length > 1 && globals.rules.multipleProfiles" id="profilesCaret" class="fa fa-caret-down" aria-hidden="true" #profilesCaret></li>
+                </span>
+                <profile-drawer></profile-drawer>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="social">
+                <a *ngIf="globals.rules.socialMediaFB" id="facebookLogin" class="fa fa-facebook"></a>&nbsp;
+                <a *ngIf="globals.rules.socialMediaTwitter" id="twitterLogin" class="fa fa-twitter"></a>&nbsp;
+                <a *ngIf="globals.rules.socialMediaInstagram" id="instagramLogin" class="fa fa-instagram"></a>
+              </div>
+            </td>
+            <td>
+              <div class="searchTools">
+                <form (ngSubmit)="search()">
+                  <a><span class="fa fa-search" (click)="search()"></span></a>
+                  <input type="text" [(ngModel)]="searchTerm" name="searchTerm">
+                </form>
+              </div>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+  </div>
+
+</div>

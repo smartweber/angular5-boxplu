@@ -1,0 +1,188 @@
+/*
+ * Common elements for details page
+ */
+.details-primary-title {
+  margin-right: auto;
+  margin-top: 190px;
+  font-family: OpenSans-Semibold;
+  font-size: 18px;
+  height: 22px;
+}
+
+.breadCrumb {
+  display: inline;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.details-content {
+  margin-top: 23px;
+
+  .details-title {
+    margin-right: auto;
+    margin-top: 23px;
+    font-family: OpenSans-Semibold;
+    font-size: 18px;
+    height: 22px;
+  }
+
+  .details-title-d {
+    margin-right: auto;
+    font-family: OpenSans-Semibold;
+    font-size: 18px;
+    /* height: 22px; */
+  }
+
+  .detailsArrow {
+    font-family: OpenSans;
+    margin: 0 15px;
+  }
+}
+
+#detailsMovieTitle {
+  font-family: OpenSans-Semibold;
+  font-size: 18px;
+
+}
+
+#detailsShareBtns  {
+  margin-left: auto;
+}
+
+.shareBtn {
+  margin-right: 7px;
+}
+
+.details-layout-a-image-big {
+  margin: 25px auto;
+  justify-content: center;
+
+  img {
+    max-height: 445px;
+  }
+}
+
+.details-layout-b-image-big {
+  margin: 25px 0;
+  width: 100%;
+  max-height: 317px;
+
+  img {
+    border: 1px solid rgba(255,255,255, 0.6);
+  }
+}
+
+.details-layout-D-image-banner {
+  margin: 25px 0;
+  width: 566px;
+  max-width: 566px;
+
+  img {
+    box-shadow: 1px 1px 3px 1px #20202F;
+  }
+}
+
+.icon_button {
+  height: 35px;
+  font-size: 16px;
+  margin-right: 8px;
+  background-color: $TVCbutton-color;
+  border-radius: 50%;
+  padding: 3px 13px 0px 13px;
+  border: 2px solid #ffffff;
+}
+
+.full_button {
+  padding: 5px;
+  margin-right: 17px;
+  border-radius: 7px;
+  min-width: 100px;
+  font-size: 16px;
+}
+
+// For rating stars
+.ratingWrapper {
+  width: 333px;
+  margin: 30px auto;
+}
+/***************************
+Pulls the stars container to the left
+***************************/
+.rating {
+  display: inline;
+
+}
+/***************************
+Hides the radio buttons
+***************************/
+.rating:not(:checked) > input {
+  position:absolute;
+  top:-9999px;
+  clip:rect(0,0,0,0);
+}
+/***************************
+Default stars styles
+***************************/
+.rating:not(:checked) > label {
+  float:right;
+  width:1em;
+  padding:0.1em;
+  border: 10px;
+  overflow:hidden;
+  white-space:nowrap;
+  cursor:pointer;
+  font-size:333%;
+  line-height:1.2;
+  color:$TVCinput-bg-color;
+}
+/***************************
+Adds the star symbol to the labels
+***************************/
+.rating:not(:checked) > label:before {
+  font-family: FontAwesome;
+  content: '\f005\00a0';
+}
+/***************************
+Colour for the applied rating stars
+***************************/
+.rating > input:checked ~ label {
+  color: white;
+}
+/***************************
+Colour for hovered stars when increasing the rating
+***************************/
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+  color: white;
+}
+/***************************
+Colour for hovered stars when decreasing the rating
+***************************/
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+  color: white;
+}
+
+.relatedTitle {
+  font-size: 18px;
+  line-height: 1.22;
+}
+
+.favourite {
+  color:red;
+  background: white;
+}
+
+/* For making a broken heart */
+.fa-bolt {
+  top:0%;
+  left:2%;
+  font-size:70%;
+  transform: scale(0.8, 1.25);
+}
+
+.broken-heart {
+  left: -5px;
+}

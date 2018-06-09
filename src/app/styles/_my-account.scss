@@ -1,0 +1,105 @@
+/* Mobile first, targeting low end devices */
+#myAccountWrapper {
+  margin-top: 170px;
+}
+
+.my-account-wrapper {
+  width: 320px;
+  margin: 0 auto;
+
+  @include tablet {
+    width: $tablet-width;
+  }
+}
+
+.my-account-screen-title {
+  font-size: 18px;
+  line-height: 1.22;
+  margin-left: 25px;
+}
+
+.my-account-user-wrapper {
+  width: 320px;
+  min-width: 320px;
+  margin: 0 auto;
+  margin-top: 44px;
+
+  .avatar {
+    width: 48px;
+    height: 48px;
+    font-size: 48px;
+    color: $social-icon-bg;
+    margin-right: 25px;
+
+    @include tablet {
+      width: 95px;
+      height: 95px;
+      font-size: 95px;
+    }
+  }
+
+  .user-info {
+    font-size: 18px;
+
+    border-spacing: 5px;
+
+    .label {
+      font-size: 18px;
+      color: $text-color;
+    }
+
+    .info {
+      color: $highlight-text-color;
+    }
+  }
+}
+
+.my-account-menu-wrapper {
+  width: 211px;
+  min-width: 211px;
+  margin: 0 auto;
+  margin-top: 50px;
+
+}
+
+.my-account-menuOption {
+  border: 1px solid #fff;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: fit-content;
+  min-width: 211px;
+
+}
+
+.my-account-menuOptionsTbl {
+  width: auto;
+  border: none;
+  font-weight: bold;
+
+
+  tr {
+    &:hover {
+      background-color: $input-bg-color;
+    }
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      color: $link-hover-color
+    }
+  }
+
+  td {
+    padding: 5px 24px 5px;
+    min-width: 211px;
+    min-height: 31px;
+    text-align: center;
+
+  }
+
+  .my-account-btn-txt {
+    color: $text-color;
+  }
+}

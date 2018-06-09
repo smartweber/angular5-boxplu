@@ -1,0 +1,16 @@
+<div id="outerSettingsWrapper">
+  <h4>{{globals.strings.SCREEN_SETTINGS}}</h4>
+  <div class="sett-menu-wrapper">
+    <div class="sett-menuOption" *ngFor="let menuOption of menuOptions">
+      <table class="sett-menuOptionsTbl">
+        <tr>
+          <a routerLink="/settings/{{menuOption.route}}">
+            <td class="sett-desc"><span class="upper">{{menuOption.option}}</span><br>{{menuOption.desc}}</td>
+            <td class="sett-action">{{menuOption.action}}</td>
+          </a>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+

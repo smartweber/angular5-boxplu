@@ -1,0 +1,283 @@
+/***** popup common styles *****/
+
+.popup-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999999999999999999999;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+.popup-content {
+  @include centerer;
+  z-index: 2;
+  padding: 10px;
+  background-color: $bg-color;
+  border: solid 1px #979797;
+  padding: 0 auto;
+
+  @include tablet {
+    width: 635px;
+    max-width: 100%; /* prevent scroll bar to show on smaller screens */
+    max-height: 100%;
+  }
+
+  #loginContent {
+    text-align: center;
+
+    .errorMsgs {
+      color: #fff;
+      background-color: rgba(255,0,0,0.8);
+      border-radius: 10px;
+      border: 2px solid #fff;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 7px;
+      max-width: 70%;
+      margin: 0 auto;
+    }
+  }
+
+  .popup-title {
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  .popup-body {
+    margin: 0 auto;
+    text-align: center;
+  }
+}
+
+.facebook_login_btn {
+  color: $highlight-text-color;
+  background-color: #4e69a2;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-radius: 0;
+  margin: 0 auto;
+  margin-top: 38px;
+  margin-bottom: 60px;
+  min-width: 211px;
+
+  @include tablet {
+    font-size: 14px;
+  }
+
+  &:hover {
+    background-color: #293575;
+    border-color: #29487d;
+    color: #fff;
+  }
+}
+
+.keepSignedCheckBox {
+  width: 28px;
+  height: 28px;
+  background-color: #fff;
+  border: none;
+
+  &:checked {
+    color: #ccc;
+  }
+}
+
+.popup-close {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+.close-button {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 24px;
+  height: 24px;
+  text-align: center;
+  cursor: pointer;
+  background: url("assets/close-dialog-icon-32x32.png");
+  background-size: 24px 24px;
+  background-repeat: no-repeat;
+
+  &:hover {
+    background: url("assets/close-dialog-icon-focus-32x32.png");
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+  }
+}
+
+
+#loginFrm {
+  margin-top: 15px;
+
+  input[type="email"], input[type="password"], input[type="text"]  {
+    background-color: $input-bg-color!important;
+    color: $input-text-color!important;
+    border: 1px solid #fff;
+    min-width: 211px;
+    margin-bottom: 25px;
+    min-height: 31px;
+    text-indent: 7px;
+  }
+
+  input[type="checkbox"] {
+    margin-right: 15px;
+    vertical-align: middle;
+  }
+
+  .loginPassword {
+    position: relative;
+    width: 211px;
+    margin: 0 auto;
+
+    .fa-eye, .fa-eye-slash {
+      position: absolute;
+      top: 7px;
+      right: 5px;
+      font-size: 18px;
+      color: $text-color;
+
+      &:hover {
+        color: $highlight-text-color;
+      }
+    }
+
+  }
+
+  label span {
+    vertical-align: middle;
+  }
+}
+
+.actionBtnWrapper {
+  margin-top: 28px;
+  margin-bottom: 36px;
+
+  .pressBtn {
+    color: #ffffff;
+    background-color: $TVCbutton-color;
+    border-radius: 5px;
+    font-size: 14px;
+    min-width: 311px;
+
+    &:hover {
+      background-color: $TVCprimary-color;
+    }
+  }
+}
+
+#forgotPassword, #registerNewUser {
+  font-size: 14px;
+}
+
+#forgotPassword {
+  margin-bottom: 10px;
+}
+
+/* Register modal components */
+#registerContent {
+  min-width: 503px;
+
+  #errorMsgs {
+    display: none;
+    color: red;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  #title {
+    margin-top: 34px;
+    margin-bottom: 22px;
+  }
+
+  #registerFrm {
+    width: 310px;
+    margin: 0 auto;
+
+    input[type="text"], input[type="email"], input[type="password"] {
+      background-color: #414141;
+      color: #fff;
+      border: none;
+      min-width: 310px;
+      min-height: 31px;
+      text-indent: 7px;
+    }
+
+    input[type="checkbox"] {
+      width: 28px;
+      height: 28px;
+      background-color: #fff;
+      border: none;
+      vertical-align: middle;
+      margin-right: 7px;
+
+      &:checked {
+        color: #ccc;
+      }
+    }
+
+    label {
+      font-size: 12px;
+      display: block;
+    }
+
+    label span {
+      vertical-align: middle;
+    }
+
+  }
+
+  .inputRow {
+    margin-bottom:14px;
+    display: block;
+  }
+
+  #registerPassword {
+    position: relative;
+
+    .fa-eye, .fa-eye-slash {
+      position: absolute;
+      top: 20px;
+      right: 5px;
+      font-size: 18px;
+      color: #9c9c9c;
+    }
+
+  }
+
+
+
+  #signUpBtn {
+    min-width: 211px;
+    border-radius: 0;
+    color: #ffffff;
+    background-color: #fca200;
+    margin: 0 auto;
+    font-size: 12px;
+
+    &:hover {
+      background-color: $TVCprimary-color;
+    }
+
+    &:disabled {
+      background-color: $bg-color;
+      color: #9b9b9b;
+      cursor: not-allowed;
+    }
+  }
+
+  #visitLoremIpsum {
+    &:hover {
+      color: $TVCprimary-color;
+    }
+  }
+
+}

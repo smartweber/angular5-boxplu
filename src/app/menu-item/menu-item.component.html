@@ -1,0 +1,9 @@
+<app-screen *ngIf="data?.menu_option.option_type=='screen'" [data]="data"></app-screen>
+
+<app-guide *ngIf="data?.menu_option.option_type=='epg'"></app-guide>
+
+<app-settings *ngIf="data?.menu_option.option_type=='custom' && data?.menu_option.custom_value=='settings'"></app-settings>
+
+<div *ngIf="globals.userLoggedIn && data?.menu_option.option_type=='my_stuff' && data?.menu_option.name==globals.strings.CONTENT_GROUP_BTN_FAVOURITES">
+  <h1>FAVOURITES CUSTOM MENU TYPE</h1>
+</div>

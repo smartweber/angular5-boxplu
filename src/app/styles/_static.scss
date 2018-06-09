@@ -1,0 +1,269 @@
+.static {
+  background-size: 15%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  min-height: 100%;
+}
+
+.faq {
+  max-width: 800px;
+  margin: 0 auto;
+  color: grey;
+
+  .title {
+    text-align: center;
+    margin: 40px 0px;
+  }
+
+  a:visited {
+    color: #2682d7;
+  }
+
+  a:link {
+    color: #2682d7;
+  }
+}
+
+.contact-us {
+  max-width: 800px;
+  margin: 0 auto;
+  color: grey;
+
+  .title {
+    text-align: center;
+    margin: 40px 0px;
+  }
+}
+
+.sales {
+  max-width: 800px;
+  margin: 0 auto;
+  color: grey;
+
+  .title {
+    text-align: center;
+    margin: 40px 0px;
+  }
+
+  .sales_item {
+    with: 100%;
+    border-bottom: solid 1px rgba(98, 107, 121, 0.4);
+
+    .title {
+      text-align: left;
+      margin: 40px 0px;
+    }
+
+    .text {
+      text-align: left;
+
+      p {
+        font-family: OpenSans;
+        font-size: 16px;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.5;
+        text-align: justify;
+        color: #626b79;
+      }
+    }
+  }
+}
+
+.latest-news {
+  max-width: 800px;
+  margin: 0 auto;
+  color: grey;
+
+  .title {
+    text-align: center;
+    margin: 40px 0px;
+  }
+
+  .theArticle {
+    .news_title {
+      margin: 40px 0px;
+
+      a {
+        font-family: OpenSans;
+        font-size: 28px;
+        font-style: normal;
+        font-stretch: normal;
+        font-weight: bold;
+        text-decoration: none;
+        line-height: 1.18;
+        color: #2682d7;
+      }
+    }
+
+    .news_text {
+      text-align: left;
+
+      p {
+        font-family: OpenSans;
+        font-size: 16px;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.5;
+        text-align: justify;
+        color: #626b79;
+      }
+    }
+
+    .news_date {
+
+      p {
+        font-family: OpenSans;
+        font-size: 14px;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: 1.64;
+        color: #a5a9ad;
+      }
+    }
+  }
+
+  a:visited {
+    color: #2682d7;
+  }
+
+  a:link {
+    color: #2682d7;
+  }
+}
+
+.about {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  color: grey;
+
+  .title {
+    text-align: center;
+    margin: 0px 0px;
+  }
+
+  .line {
+    display: block;
+    background-color: gainsboro;
+  }
+
+  .options {
+    color: #2682d7;
+    height: 60px;
+    padding: 0px 10px;
+    vertical-align: middle;
+    border-bottom: solid 1px rgba(98, 107, 121, 0.4);
+  }
+
+  .options-container {
+    margin-top: 20px;
+  }
+
+  .options:hover {
+    background-color: gainsboro;
+    border-bottom: solid 1px transparent;
+  }
+
+  .options.focus a,
+  .options:hover a {
+    position: relative;
+    color: #2682d7;
+    background-color: gainsboro;
+
+    @include tablet {
+      color: #2682d7;
+      opacity: 1 !important;
+    }
+
+
+    @include desktop {
+      color: #2682d7;
+      opacity: 1 !important;
+    }
+  }
+
+  .options p {
+    margin: 0px;
+    line-height: 60px;
+    color: #2682d7;
+  }
+
+  .options:hover p {
+    background-color: gainsboro;
+  }
+
+  .options.focus a {
+    @include tablet {
+      padding-bottom: 7px;
+      border-bottom: solid 4px #626b79;
+    }
+
+
+    @include desktop {
+      padding-bottom: 7px;
+      border-bottom: solid 4px #626b79;
+    }
+  }
+
+  .options.focus a:after,
+  .options:hover a:after {
+    position: absolute;
+    right: -15px;
+    top: 2px;
+
+    @include tablet {
+      content: none;
+    }
+
+
+    @include desktop {
+      content: none;
+    }
+  }
+
+  p {
+    clear: both;
+    color: #626B79;
+  }
+
+  h1 {
+    float: left;
+    display: block;
+    width: 50%;
+
+    @include tablet {
+      font-size: 4em;
+    }
+
+
+    @include desktop {
+      font-size: 5em;
+    }
+  }
+
+  span {
+    width: 20px;
+    height: 20px;
+    line-height: 60px;
+    float: right;
+    position: relative;
+    top: 22.225px;
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  a {
+    color: #2682d7;
+  }
+
+  a:visited {
+    color: #2682d7;
+  }
+
+  a:link {
+    color: #2682d7;
+  }
+}

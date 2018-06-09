@@ -1,0 +1,45 @@
+#changeLanguageWrapper {
+  margin-top: 170px;
+}
+
+.sett-languages-wrapper {
+  margin-top: 50%;
+  width: 50%;
+  max-width: 620px;
+  margin: 0 auto;
+  @include centerer;
+
+
+  .langListTbl {
+    width: 100%;
+    border: none;
+    margin-top: 2em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2em;
+    font-size: 16px;
+
+    .langListTblRow {
+      border-bottom: 1px solid #fff;
+    }
+
+    .langListTblCol {
+      padding: 14px !important;
+      font-weight: bold;
+    }
+
+    .check {
+      text-align: right;
+    }
+
+    [class*="fa fa-"] {
+      font-size: 2em;
+      color: $text-color;
+
+      &:hover {
+        cursor: pointer;
+        color: $highlight-text-color;
+      }
+    }
+  }
+}

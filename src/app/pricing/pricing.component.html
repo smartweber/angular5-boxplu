@@ -1,0 +1,14 @@
+<div class="subscriptionsContentWrapper">
+  <h3 style="text-align: center">{{globals.strings.SUBSCRIPTIONS_PLAN_TITLE || 'Subscription plan(hardcoded)'}}</h3>
+  <!-- Show all available subscriptions -->
+  <table *ngIf="gotSubscriptions" class="subscriptionsTableWrapper" >
+    <tr *ngFor="let plan of globals.subscriptions.data; let i = index">
+      <!-- Plan name -->
+      <td class="subscriptionsPlan" [ngStyle]="{'background-color': colorPlan[i].bkCol,'color': colorPlan[i].textCol}" > {{plan.plan_name}}</td>
+      <!-- Plan description -->
+      <td class="subscriptionsDetails" [style.borderColor]="colorPlan[i].bkCol">{{plan?.headline}}</td>
+      <!-- <div class="subscriptionsDetails" [ngStyle]="{'border-color': colorPlan[i]}">{{plan.id}}</div> -->
+    </tr>
+  </table>
+</div>
+
