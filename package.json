@@ -27,7 +27,7 @@
     "@angular/router": "^5.0.0",
     "@types/jquery": "^3.2.7",
     "@types/videojs": "^5.16.2",
-    "bootstrap": "^3.3.7",
+    "bootstrap": ">=4.1.2",
     "bootstrap-select": "^1.12.4",
     "core-js": "^2.5.5",
     "css-loader": "^0.28.4",
